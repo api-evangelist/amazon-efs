@@ -1,0 +1,105 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "aws": "https://aws.amazon.com/efs/",
+    "efs": "https://docs.aws.amazon.com/efs/latest/ug/",
+    "FileSystem": {
+      "@id": "aws:FileSystem",
+      "@type": "DigitalDocument",
+      "@context": {
+        "FileSystemId": {
+          "@id": "aws:FileSystemId",
+          "@type": "xsd:string"
+        },
+        "FileSystemArn": {
+          "@id": "aws:FileSystemArn",
+          "@type": "@id"
+        },
+        "CreationToken": {
+          "@id": "aws:CreationToken",
+          "@type": "xsd:string"
+        },
+        "OwnerId": {
+          "@id": "aws:OwnerId",
+          "@type": "xsd:string"
+        },
+        "CreationTime": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "LifeCycleState": {
+          "@id": "schema:status",
+          "@type": "xsd:string"
+        },
+        "Name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "NumberOfMountTargets": {
+          "@id": "aws:NumberOfMountTargets",
+          "@type": "xsd:integer"
+        },
+        "SizeInBytes": {
+          "@id": "schema:contentSize",
+          "@type": "@id"
+        },
+        "PerformanceMode": {
+          "@id": "aws:PerformanceMode",
+          "@type": "xsd:string"
+        },
+        "Encrypted": {
+          "@id": "aws:Encrypted",
+          "@type": "xsd:boolean"
+        },
+        "ThroughputMode": {
+          "@id": "aws:ThroughputMode",
+          "@type": "xsd:string"
+        },
+        "ProvisionedThroughputInMibps": {
+          "@id": "aws:ProvisionedThroughputInMibps",
+          "@type": "xsd:decimal"
+        }
+      }
+    },
+    "MountTarget": {
+      "@id": "aws:MountTarget",
+      "@type": "Thing",
+      "@context": {
+        "MountTargetId": {
+          "@id": "aws:MountTargetId",
+          "@type": "xsd:string"
+        },
+        "FileSystemId": {
+          "@id": "aws:FileSystemId",
+          "@type": "xsd:string"
+        },
+        "SubnetId": {
+          "@id": "aws:SubnetId",
+          "@type": "xsd:string"
+        },
+        "LifeCycleState": {
+          "@id": "schema:status",
+          "@type": "xsd:string"
+        },
+        "IpAddress": {
+          "@id": "aws:IpAddress",
+          "@type": "xsd:string"
+        },
+        "NetworkInterfaceId": {
+          "@id": "aws:NetworkInterfaceId",
+          "@type": "xsd:string"
+        },
+        "AvailabilityZoneName": {
+          "@id": "aws:AvailabilityZoneName",
+          "@type": "xsd:string"
+        },
+        "VpcId": {
+          "@id": "aws:VpcId",
+          "@type": "xsd:string"
+        }
+      }
+    },
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  }
+}
