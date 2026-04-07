@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Amazon Elastic File System (EFS) API
+  title: Amazon EFS Amazon Elastic File System (EFS) API
   description: Amazon EFS provides a simple, serverless, set-and-forget elastic file system for use with AWS cloud services and on-premises resources.
   version: '2015-02-01'
   contact:
@@ -17,7 +17,7 @@ paths:
   /2015-02-01/file-systems:
     post:
       operationId: createFileSystem
-      summary: Create File System
+      summary: Amazon EFS Create File System
       description: Creates a new, empty file system. The operation requires a creation token in the request that Amazon EFS uses to ensure idempotent creation.
       requestBody:
         required: true
@@ -74,7 +74,7 @@ paths:
           description: Bad request error.
     get:
       operationId: describeFileSystems
-      summary: Describe File Systems
+      summary: Amazon EFS Describe File Systems
       description: Returns the description of a specific Amazon EFS file system or all file systems owned by the caller.
       parameters:
         - name: CreationToken
@@ -109,7 +109,7 @@ paths:
   /2015-02-01/file-systems/{FileSystemId}:
     delete:
       operationId: deleteFileSystem
-      summary: Delete File System
+      summary: Amazon EFS Delete File System
       description: Deletes a file system, permanently severing access to its contents. You must delete all mount targets associated with the file system before you can delete it.
       parameters:
         - name: FileSystemId
@@ -126,7 +126,7 @@ paths:
   /2015-02-01/mount-targets:
     post:
       operationId: createMountTarget
-      summary: Create Mount Target
+      summary: Amazon EFS Create Mount Target
       description: Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target.
       requestBody:
         required: true
@@ -163,7 +163,7 @@ paths:
           description: Bad request error.
     get:
       operationId: describeMountTargets
-      summary: Describe Mount Targets
+      summary: Amazon EFS Describe Mount Targets
       description: Returns the descriptions of all the current mount targets for a file system.
       parameters:
         - name: FileSystemId
