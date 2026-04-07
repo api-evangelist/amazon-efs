@@ -5,14 +5,14 @@ url: https://aws.amazon.com/efs/
 created: '2024-01-15'
 modified: '2026-03-16'
 tags:
-  - AWS
   - Amazon Web Services
+  - AWS
   - EFS
   - Elastic File System
   - File Storage
   - NFS
-  - Storage
   - Serverless
+  - Storage
 apis:
   - name: Amazon EFS API
     description: API for managing Amazon EFS file systems, mount targets, and related resources.

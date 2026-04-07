@@ -72,6 +72,8 @@ paths:
                 $ref: '#/components/schemas/FileSystem'
         '400':
           description: Bad request error.
+      tags:
+        - 2015 02 01
     get:
       operationId: describeFileSystems
       summary: Amazon EFS Describe File Systems
@@ -106,6 +108,8 @@ paths:
                 $ref: '#/components/schemas/DescribeFileSystemsResponse'
         '400':
           description: Bad request error.
+      tags:
+        - 2015 02 01
   /2015-02-01/file-systems/{FileSystemId}:
     delete:
       operationId: deleteFileSystem
@@ -123,6 +127,8 @@ paths:
           description: Successful deletion, no content returned.
         '404':
           description: File system not found.
+      tags:
+        - 2015 02 01
   /2015-02-01/mount-targets:
     post:
       operationId: createMountTarget
@@ -161,6 +167,8 @@ paths:
                 $ref: '#/components/schemas/MountTarget'
         '400':
           description: Bad request error.
+      tags:
+        - 2015 02 01
     get:
       operationId: describeMountTargets
       summary: Amazon EFS Describe Mount Targets
@@ -204,6 +212,8 @@ paths:
                     type: string
         '400':
           description: Bad request error.
+      tags:
+        - 2015 02 01
 components:
   schemas:
     DescribeFileSystemsResponse:
@@ -334,3 +344,5 @@ components:
       name: Authorization
       in: header
       description: AWS Signature Version 4 authentication.
+tags:
+  - name: 2015 02 01
