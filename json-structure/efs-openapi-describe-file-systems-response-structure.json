@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-efs/refs/heads/main/json-structure/efs-openapi-describe-file-systems-response-structure.json",
+  "name": "DescribeFileSystemsResponse",
+  "description": "DescribeFileSystemsResponse schema from Amazon EFS Amazon Elastic File System (EFS) API",
+  "type": "object",
+  "properties": {
+    "FileSystems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FileSystem"
+      }
+    },
+    "Marker": {
+      "type": "string"
+    },
+    "NextMarker": {
+      "type": "string"
+    }
+  }
+}

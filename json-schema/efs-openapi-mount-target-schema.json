@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-efs/refs/heads/main/json-schema/efs-openapi-mount-target-schema.json",
+  "title": "MountTarget",
+  "description": "MountTarget schema from Amazon EFS Amazon Elastic File System (EFS) API",
+  "type": "object",
+  "properties": {
+    "MountTargetId": {
+      "type": "string",
+      "description": "System-assigned mount target ID."
+    },
+    "FileSystemId": {
+      "type": "string",
+      "description": "The ID of the file system for which the mount target is intended."
+    },
+    "SubnetId": {
+      "type": "string",
+      "description": "The ID of the subnet."
+    },
+    "LifeCycleState": {
+      "type": "string",
+      "description": "Lifecycle state of the mount target."
+    },
+    "IpAddress": {
+      "type": "string",
+      "description": "Address at which the file system is mountable."
+    },
+    "NetworkInterfaceId": {
+      "type": "string",
+      "description": "The ID of the network interface."
+    },
+    "AvailabilityZoneId": {
+      "type": "string",
+      "description": "The unique and consistent identifier of the Availability Zone."
+    },
+    "AvailabilityZoneName": {
+      "type": "string",
+      "description": "The name of the Availability Zone."
+    },
+    "VpcId": {
+      "type": "string",
+      "description": "The Virtual Private Cloud ID."
+    }
+  }
+}

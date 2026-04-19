@@ -1,0 +1,131 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon EFS"
+  description: "Amazon EFS serverless elastic file system."
+  tags:
+    - Amazon EFS
+    - AWS
+    - Storage
+    - File System
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: efs
+      baseUri: https://elasticfilesystem.us-east-1.amazonaws.com
+      description: "Amazon EFS serverless elastic file system."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "AWS4-HMAC-SHA256 Credential={{env.AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: 2015-02-01
+          path: /2015-02-01/file-systems
+          description: "Operations for 2015-02-01 resources."
+          operations:
+            - name: describeFileSystems
+              method: GET
+              description: "Amazon EFS Describe File Systems"
+              inputParameters:
+                - name: CreationToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Restricts the list to the file system with this creation token."
+                - name: FileSystemId
+                  in: query
+                  type: string
+                  required: false
+                  description: "The ID of the file system to describe."
+                - name: MaxItems
+                  in: query
+                  type: integer
+                  required: false
+                  description: "The maximum number of file systems to return."
+                - name: Marker
+                  in: query
+                  type: string
+                  required: false
+                  description: "An opaque pagination token returned from a previous request."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: createFileSystem
+              method: POST
+              description: "Amazon EFS Create File System"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: 2015-02-01
+          path: /2015-02-01/file-systems/{FileSystemId}
+          description: "Operations for 2015-02-01 resources."
+          operations:
+            - name: deleteFileSystem
+              method: DELETE
+              description: "Amazon EFS Delete File System"
+              inputParameters:
+                - name: FileSystemId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the file system to delete."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: 2015-02-01
+          path: /2015-02-01/mount-targets
+          description: "Operations for 2015-02-01 resources."
+          operations:
+            - name: describeMountTargets
+              method: GET
+              description: "Amazon EFS Describe Mount Targets"
+              inputParameters:
+                - name: FileSystemId
+                  in: query
+                  type: string
+                  required: false
+                  description: "The ID of the file system whose mount targets to list."
+                - name: MountTargetId
+                  in: query
+                  type: string
+                  required: false
+                  description: "The ID of the mount target to describe."
+                - name: MaxItems
+                  in: query
+                  type: integer
+                  required: false
+                  description: "The maximum number of mount targets to return."
+                - name: Marker
+                  in: query
+                  type: string
+                  required: false
+                  description: "An opaque pagination token returned from a previous request."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: createMountTarget
+              method: POST
+              description: "Amazon EFS Create Mount Target"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."

@@ -1,0 +1,54 @@
+vocabulary: 1.0.0
+info:
+  provider: Amazon EFS
+  description: Unified vocabulary and taxonomy for Amazon EFS APIs covering operational and capability dimensions.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Amazon EFS API
+    namespace: efs
+    version: '2024'
+    status: active
+  resources:
+  - name: '2015-02-01'
+    description: 2015-02-01 resources
+  actions:
+  - name: create
+    pattern: write
+  - name: describe
+    pattern: read
+  - name: delete
+    pattern: write
+  schemas:
+    core:
+    - name: DescribeFileSystemsResponse
+      description: DescribeFileSystemsResponse schema
+    - name: FileSystem
+      description: FileSystem schema
+    - name: MountTarget
+      description: MountTarget schema
+  authentication:
+    schemes:
+    - AWS Signature Version 4
+    description: All API requests use AWS Signature Version 4 for authentication.
+capability:
+  workflows:
+  - name: File System Management
+    file: capabilities/efs-management.yaml
+    description: Workflow capability for File System Management.
+  personas:
+  - id: cloud-engineer
+    name: Cloud Engineer
+    description: Engineers managing Amazon EFS resources on AWS.
+    workflows:
+    - File System Management
+  domains:
+  - name: File System Management
+    description: File System Management business domain for Amazon EFS.
+crossReference:
+- resource: '2015-02-01'
+  workflows:
+  - File System Management
+  personas:
+  - Cloud Engineer

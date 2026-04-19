@@ -1,0 +1,5 @@
+{
+  "CreationToken": "example-string-value",
+  "FileSystemId": "example-id-4435",
+  "FileSystemArn": "arn:aws:service:us-east-1:123456789012:resource/example"
+}

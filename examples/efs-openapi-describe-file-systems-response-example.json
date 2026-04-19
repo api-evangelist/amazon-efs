@@ -1,0 +1,7 @@
+{
+  "FileSystems": [
+    "example"
+  ],
+  "Marker": "example-string-value",
+  "NextMarker": "example-string-value"
+}
