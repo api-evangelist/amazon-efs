@@ -1,0 +1,271 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon EFS Amazon Elastic File System (EFS) API — 2015 02 01
+  description: 'Amazon EFS Amazon Elastic File System (EFS) API — 2015 02 01. 5 operations. Lead operation: Amazon EFS Create
+    File System. Self-contained Naftiko capability covering one Amazon Efs business surface.'
+  tags:
+  - Amazon Efs
+  - 2015 02 01
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_EFS_API_KEY: AMAZON_EFS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-efs-2015-02-01
+    baseUri: https://elasticfilesystem.amazonaws.com
+    description: Amazon EFS Amazon Elastic File System (EFS) API — 2015 02 01 business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: 2015-02-01-file-systems
+      path: /2015-02-01/file-systems
+      operations:
+      - name: createfilesystem
+        method: POST
+        description: Amazon EFS Create File System
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: describefilesystems
+        method: GET
+        description: Amazon EFS Describe File Systems
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: CreationToken
+          in: query
+          type: string
+          description: Restricts the list to the file system with this creation token.
+        - name: FileSystemId
+          in: query
+          type: string
+          description: The ID of the file system to describe.
+        - name: MaxItems
+          in: query
+          type: integer
+          description: The maximum number of file systems to return.
+        - name: Marker
+          in: query
+          type: string
+          description: An opaque pagination token returned from a previous request.
+    - name: 2015-02-01-file-systems-FileSystemId
+      path: /2015-02-01/file-systems/{FileSystemId}
+      operations:
+      - name: deletefilesystem
+        method: DELETE
+        description: Amazon EFS Delete File System
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileSystemId
+          in: path
+          type: string
+          description: The ID of the file system to delete.
+          required: true
+    - name: 2015-02-01-mount-targets
+      path: /2015-02-01/mount-targets
+      operations:
+      - name: createmounttarget
+        method: POST
+        description: Amazon EFS Create Mount Target
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: describemounttargets
+        method: GET
+        description: Amazon EFS Describe Mount Targets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: FileSystemId
+          in: query
+          type: string
+          description: The ID of the file system whose mount targets to list.
+        - name: MountTargetId
+          in: query
+          type: string
+          description: The ID of the mount target to describe.
+        - name: MaxItems
+          in: query
+          type: integer
+          description: The maximum number of mount targets to return.
+        - name: Marker
+          in: query
+          type: string
+          description: An opaque pagination token returned from a previous request.
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_EFS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-efs-2015-02-01-rest
+    port: 8080
+    description: REST adapter for Amazon EFS Amazon Elastic File System (EFS) API — 2015 02 01. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/2015-02-01/file-systems
+      name: 2015-02-01-file-systems
+      description: REST surface for 2015-02-01-file-systems.
+      operations:
+      - method: POST
+        name: createfilesystem
+        description: Amazon EFS Create File System
+        call: amazon-efs-2015-02-01.createfilesystem
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: describefilesystems
+        description: Amazon EFS Describe File Systems
+        call: amazon-efs-2015-02-01.describefilesystems
+        with:
+          CreationToken: rest.CreationToken
+          FileSystemId: rest.FileSystemId
+          MaxItems: rest.MaxItems
+          Marker: rest.Marker
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-02-01/file-systems/{filesystemid}
+      name: 2015-02-01-file-systems-filesystemid
+      description: REST surface for 2015-02-01-file-systems-FileSystemId.
+      operations:
+      - method: DELETE
+        name: deletefilesystem
+        description: Amazon EFS Delete File System
+        call: amazon-efs-2015-02-01.deletefilesystem
+        with:
+          FileSystemId: rest.FileSystemId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/2015-02-01/mount-targets
+      name: 2015-02-01-mount-targets
+      description: REST surface for 2015-02-01-mount-targets.
+      operations:
+      - method: POST
+        name: createmounttarget
+        description: Amazon EFS Create Mount Target
+        call: amazon-efs-2015-02-01.createmounttarget
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: describemounttargets
+        description: Amazon EFS Describe Mount Targets
+        call: amazon-efs-2015-02-01.describemounttargets
+        with:
+          FileSystemId: rest.FileSystemId
+          MountTargetId: rest.MountTargetId
+          MaxItems: rest.MaxItems
+          Marker: rest.Marker
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-efs-2015-02-01-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon EFS Amazon Elastic File System (EFS) API — 2015 02 01. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: amazon-efs-create-file-system
+      description: Amazon EFS Create File System
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-efs-2015-02-01.createfilesystem
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-efs-describe-file-systems
+      description: Amazon EFS Describe File Systems
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-efs-2015-02-01.describefilesystems
+      with:
+        CreationToken: tools.CreationToken
+        FileSystemId: tools.FileSystemId
+        MaxItems: tools.MaxItems
+        Marker: tools.Marker
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-efs-delete-file-system
+      description: Amazon EFS Delete File System
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-efs-2015-02-01.deletefilesystem
+      with:
+        FileSystemId: tools.FileSystemId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-efs-create-mount-target
+      description: Amazon EFS Create Mount Target
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-efs-2015-02-01.createmounttarget
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-efs-describe-mount-targets
+      description: Amazon EFS Describe Mount Targets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-efs-2015-02-01.describemounttargets
+      with:
+        FileSystemId: tools.FileSystemId
+        MountTargetId: tools.MountTargetId
+        MaxItems: tools.MaxItems
+        Marker: tools.Marker
+      outputParameters:
+      - type: object
+        mapping: $.

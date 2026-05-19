@@ -1,10 +1,11 @@
 name: Amazon EFS
-description: Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file system for use with AWS cloud services and on-premises resources. EFS is built to scale on 
-  demand to petabytes without disrupting applications, growing and shrinking automatically as you add and remove files.
+description: Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file system for use with
+  AWS cloud services and on-premises resources. EFS is built to scale on demand to petabytes without disrupting applications,
+  growing and shrinking automatically as you add and remove files.
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/efs/
 created: '2024-01-15'
-modified: '2026-04-19'
+modified: '2026-05-19'
 tags:
 - Amazon Web Services
 - AWS
@@ -49,6 +50,8 @@ apis:
     url: json-structure/amazon-efs-filesystem-structure.json
   - type: Example
     url: examples/amazon-efs-filesystem-example.json
+  - type: NaftikoCapability
+    url: capabilities/amazon-efs-2015-02-01.yaml
 common:
 - type: Portal
   url: https://aws.amazon.com/
@@ -128,19 +131,17 @@ common:
   url: rules/amazon-efs-spectral-rules.yml
 - type: Vocabulary
   url: vocabulary/amazon-efs-vocabulary.yaml
-- type: NaftikoCapability
-  url: capabilities/efs-management.yaml
 - type: Integrations
   url: https://aws.amazon.com/marketplace
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
 integrations:
-  - name: Agent Mode
-  - name: Sign in
-  - name: Become a Channel Partner
-  - name: Resources
-  - name: Sell in AWS Marketplace
-  - name: 'Why AWS Marketplace?'
-  - name: Get started in AWS Marketplace
-  - name: Manage Your Account
+- name: Agent Mode
+- name: Sign in
+- name: Become a Channel Partner
+- name: Resources
+- name: Sell in AWS Marketplace
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Manage Your Account
