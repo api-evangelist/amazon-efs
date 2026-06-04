@@ -1,0 +1,89 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EFS Find or Create File System
+  summary: Look up a file system by creation token and create it only if it does not already exist.
+  description: >-
+    An idempotent provisioning pattern for Amazon EFS. The workflow describes
+    file systems filtered by a creation token and branches: when a matching file
+    system already exists it returns that file system without creating a new one,
+    and when none is found it creates a fresh file system with the same creation
+    token. This makes repeated runs safe to re-execute. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEfsApi
+  url: ../openapi/amazon-efs-openapi.yml
+  type: openapi
+workflows:
+- workflowId: find-or-create-file-system
+  summary: Resolve a file system by creation token, creating it only when absent.
+  description: >-
+    Searches for an existing file system by its creation token and, depending on
+    whether one is found, either returns the existing file system or creates a
+    new one with the supplied configuration.
+  inputs:
+    type: object
+    required:
+    - creationToken
+    properties:
+      creationToken:
+        type: string
+        description: The creation token that uniquely identifies the desired file system.
+      performanceMode:
+        type: string
+        description: The performance mode to use when creating the file system (generalPurpose or maxIO).
+      throughputMode:
+        type: string
+        description: The throughput mode to use when creating the file system (bursting, provisioned, or elastic).
+      encrypted:
+        type: boolean
+        description: When true, creates an encrypted file system if one must be created.
+  steps:
+  - stepId: findFileSystem
+    description: >-
+      Describe file systems restricted to the supplied creation token and branch
+      on whether a match already exists.
+    operationId: describeFileSystems
+    parameters:
+    - name: CreationToken
+      in: query
+      value: $inputs.creationToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      existingFileSystemId: $response.body#/FileSystems/0/FileSystemId
+    onSuccess:
+    - name: alreadyExists
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.FileSystems.length > 0
+        type: jsonpath
+    - name: needsCreation
+      type: goto
+      stepId: createFileSystem
+      criteria:
+      - context: $response.body
+        condition: $.FileSystems.length == 0
+        type: jsonpath
+  - stepId: createFileSystem
+    description: >-
+      Create a new file system with the supplied creation token when no existing
+      file system matched.
+    operationId: createFileSystem
+    requestBody:
+      contentType: application/json
+      payload:
+        CreationToken: $inputs.creationToken
+        PerformanceMode: $inputs.performanceMode
+        ThroughputMode: $inputs.throughputMode
+        Encrypted: $inputs.encrypted
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      createdFileSystemId: $response.body#/FileSystemId
+      lifeCycleState: $response.body#/LifeCycleState
+  outputs:
+    existingFileSystemId: $steps.findFileSystem.outputs.existingFileSystemId
+    createdFileSystemId: $steps.createFileSystem.outputs.createdFileSystemId

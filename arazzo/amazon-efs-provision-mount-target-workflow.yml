@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EFS Provision Mount Target
+  summary: Verify a file system is available, create a mount target, then poll until the mount target is available.
+  description: >-
+    Attaches an additional mount target to an existing Amazon EFS file system.
+    The workflow first confirms the target file system is in the available
+    lifecycle state, creates a mount target in the requested subnet, and then
+    polls the describe mount targets operation until the new mount target itself
+    reaches the available state and is ready to serve mounts. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEfsApi
+  url: ../openapi/amazon-efs-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-mount-target
+  summary: Confirm a file system is available, add a mount target, and poll until it is available.
+  description: >-
+    Validates that an existing file system is available, creates a mount target
+    in the supplied subnet, then waits for the mount target LifeCycleState to
+    become available.
+  inputs:
+    type: object
+    required:
+    - fileSystemId
+    - subnetId
+    properties:
+      fileSystemId:
+        type: string
+        description: The ID of the existing file system to attach a mount target to.
+      subnetId:
+        type: string
+        description: The ID of the subnet in which to create the mount target.
+      ipAddress:
+        type: string
+        description: A valid IPv4 address within the subnet's address range.
+      securityGroups:
+        type: array
+        description: Up to five VPC security group IDs to associate with the mount target.
+        items:
+          type: string
+  steps:
+  - stepId: confirmFileSystemAvailable
+    description: >-
+      Describe the target file system and confirm it is in the available
+      lifecycle state before attaching a mount target.
+    operationId: describeFileSystems
+    parameters:
+    - name: FileSystemId
+      in: query
+      value: $inputs.fileSystemId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.FileSystems[0].LifeCycleState == "available"
+      type: jsonpath
+    outputs:
+      lifeCycleState: $response.body#/FileSystems/0/LifeCycleState
+  - stepId: createMountTarget
+    description: >-
+      Create a mount target for the available file system in the requested
+      subnet, optionally pinning a specific IP address and security groups.
+    operationId: createMountTarget
+    requestBody:
+      contentType: application/json
+      payload:
+        FileSystemId: $inputs.fileSystemId
+        SubnetId: $inputs.subnetId
+        IpAddress: $inputs.ipAddress
+        SecurityGroups: $inputs.securityGroups
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mountTargetId: $response.body#/MountTargetId
+      mountTargetState: $response.body#/LifeCycleState
+  - stepId: waitForMountTargetAvailable
+    description: >-
+      Poll the mount targets for the file system until the newly created mount
+      target reports the available lifecycle state.
+    operationId: describeMountTargets
+    parameters:
+    - name: FileSystemId
+      in: query
+      value: $inputs.fileSystemId
+    - name: MountTargetId
+      in: query
+      value: $steps.createMountTarget.outputs.mountTargetId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.MountTargets[0].LifeCycleState == "available"
+      type: jsonpath
+    outputs:
+      mountTargetState: $response.body#/MountTargets/0/LifeCycleState
+      ipAddress: $response.body#/MountTargets/0/IpAddress
+      networkInterfaceId: $response.body#/MountTargets/0/NetworkInterfaceId
+  outputs:
+    mountTargetId: $steps.createMountTarget.outputs.mountTargetId
+    mountTargetState: $steps.waitForMountTargetAvailable.outputs.mountTargetState

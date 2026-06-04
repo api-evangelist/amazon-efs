@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EFS Provision File System
+  summary: Create an EFS file system, wait for it to become available, then attach a mount target.
+  description: >-
+    The foundational Amazon EFS provisioning flow. The workflow creates a new,
+    empty file system from a creation token, polls the describe operation until
+    the file system reaches the available lifecycle state, and then creates a
+    mount target in the requested subnet so the file system can be mounted from
+    EC2 instances. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEfsApi
+  url: ../openapi/amazon-efs-openapi.yml
+  type: openapi
+workflows:
+- workflowId: provision-file-system
+  summary: Create a file system, poll until available, and add a mount target.
+  description: >-
+    Creates an encrypted, idempotent EFS file system, waits for the
+    LifeCycleState to transition from creating to available, then provisions a
+    mount target in the supplied subnet.
+  inputs:
+    type: object
+    required:
+    - creationToken
+    - subnetId
+    properties:
+      creationToken:
+        type: string
+        description: A string of up to 64 ASCII characters used to ensure idempotent creation.
+      performanceMode:
+        type: string
+        description: The performance mode of the file system (generalPurpose or maxIO).
+      throughputMode:
+        type: string
+        description: The throughput mode for the file system (bursting, provisioned, or elastic).
+      encrypted:
+        type: boolean
+        description: When true, creates an encrypted file system.
+      subnetId:
+        type: string
+        description: The ID of the subnet in which to create the mount target.
+      securityGroups:
+        type: array
+        description: Up to five VPC security group IDs to associate with the mount target.
+        items:
+          type: string
+  steps:
+  - stepId: createFileSystem
+    description: >-
+      Create a new, empty file system using the supplied creation token so the
+      request is idempotent across retries.
+    operationId: createFileSystem
+    requestBody:
+      contentType: application/json
+      payload:
+        CreationToken: $inputs.creationToken
+        PerformanceMode: $inputs.performanceMode
+        ThroughputMode: $inputs.throughputMode
+        Encrypted: $inputs.encrypted
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      fileSystemId: $response.body#/FileSystemId
+      lifeCycleState: $response.body#/LifeCycleState
+  - stepId: waitForAvailable
+    description: >-
+      Poll the describe operation for the newly created file system until its
+      LifeCycleState reports available before any mount target is attached.
+    operationId: describeFileSystems
+    parameters:
+    - name: FileSystemId
+      in: query
+      value: $steps.createFileSystem.outputs.fileSystemId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.FileSystems[0].LifeCycleState == "available"
+      type: jsonpath
+    outputs:
+      lifeCycleState: $response.body#/FileSystems/0/LifeCycleState
+      numberOfMountTargets: $response.body#/FileSystems/0/NumberOfMountTargets
+  - stepId: createMountTarget
+    description: >-
+      Create a mount target for the available file system in the requested
+      subnet so EC2 instances in that subnet can mount it.
+    operationId: createMountTarget
+    requestBody:
+      contentType: application/json
+      payload:
+        FileSystemId: $steps.createFileSystem.outputs.fileSystemId
+        SubnetId: $inputs.subnetId
+        SecurityGroups: $inputs.securityGroups
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mountTargetId: $response.body#/MountTargetId
+      mountTargetState: $response.body#/LifeCycleState
+  outputs:
+    fileSystemId: $steps.createFileSystem.outputs.fileSystemId
+    mountTargetId: $steps.createMountTarget.outputs.mountTargetId

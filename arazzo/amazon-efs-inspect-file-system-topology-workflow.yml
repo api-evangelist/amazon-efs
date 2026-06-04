@@ -1,0 +1,74 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EFS Inspect File System Topology
+  summary: Describe a file system and enumerate its mount targets to audit its network topology.
+  description: >-
+    A read-only audit flow for Amazon EFS. The workflow describes a single file
+    system to capture its lifecycle state and reported mount target count, then
+    enumerates every mount target attached to it, surfacing the subnet,
+    Availability Zone, IP address, and network interface for each. The result is
+    a complete picture of where and how the file system is reachable, useful for
+    audits and troubleshooting. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEfsApi
+  url: ../openapi/amazon-efs-openapi.yml
+  type: openapi
+workflows:
+- workflowId: inspect-file-system-topology
+  summary: Describe a file system and list all of its mount targets.
+  description: >-
+    Reads a file system's description and then lists its mount targets so a
+    caller can audit the file system's lifecycle state and network reachability
+    across subnets and Availability Zones.
+  inputs:
+    type: object
+    required:
+    - fileSystemId
+    properties:
+      fileSystemId:
+        type: string
+        description: The ID of the file system to inspect.
+      maxItems:
+        type: integer
+        description: The maximum number of mount targets to return.
+  steps:
+  - stepId: describeFileSystem
+    description: >-
+      Describe the file system and confirm it exists, capturing its lifecycle
+      state and reported number of mount targets.
+    operationId: describeFileSystems
+    parameters:
+    - name: FileSystemId
+      in: query
+      value: $inputs.fileSystemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      lifeCycleState: $response.body#/FileSystems/0/LifeCycleState
+      numberOfMountTargets: $response.body#/FileSystems/0/NumberOfMountTargets
+      fileSystemArn: $response.body#/FileSystems/0/FileSystemArn
+  - stepId: listMountTargets
+    description: >-
+      Enumerate the mount targets attached to the file system to reveal the
+      subnets, Availability Zones, and IP addresses where it is mountable.
+    operationId: describeMountTargets
+    parameters:
+    - name: FileSystemId
+      in: query
+      value: $inputs.fileSystemId
+    - name: MaxItems
+      in: query
+      value: $inputs.maxItems
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mountTargets: $response.body#/MountTargets
+      firstMountTargetSubnetId: $response.body#/MountTargets/0/SubnetId
+      firstMountTargetIpAddress: $response.body#/MountTargets/0/IpAddress
+  outputs:
+    lifeCycleState: $steps.describeFileSystem.outputs.lifeCycleState
+    numberOfMountTargets: $steps.describeFileSystem.outputs.numberOfMountTargets
+    mountTargets: $steps.listMountTargets.outputs.mountTargets

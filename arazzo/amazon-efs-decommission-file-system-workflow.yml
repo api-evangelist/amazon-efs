@@ -1,0 +1,89 @@
+arazzo: 1.0.1
+info:
+  title: Amazon EFS Decommission File System
+  summary: Confirm a file system has no mount targets, then delete the file system.
+  description: >-
+    Safely retires an Amazon EFS file system. Because EFS requires that every
+    mount target be removed before a file system can be deleted, the workflow
+    first describes the file system, then enumerates its mount targets and
+    branches: it only proceeds to delete the file system when no mount targets
+    remain, otherwise it ends without deleting so a caller can tear the mount
+    targets down first. Every step spells out its request inline so the flow can
+    be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: amazonEfsApi
+  url: ../openapi/amazon-efs-openapi.yml
+  type: openapi
+workflows:
+- workflowId: decommission-file-system
+  summary: Verify no mount targets remain, then delete the file system.
+  description: >-
+    Describes the file system, lists its mount targets, and deletes the file
+    system only when it has zero mount targets, preventing a delete that EFS
+    would reject.
+  inputs:
+    type: object
+    required:
+    - fileSystemId
+    properties:
+      fileSystemId:
+        type: string
+        description: The ID of the file system to decommission.
+  steps:
+  - stepId: describeFileSystem
+    description: >-
+      Describe the file system to confirm it exists and capture its reported
+      number of mount targets before attempting deletion.
+    operationId: describeFileSystems
+    parameters:
+    - name: FileSystemId
+      in: query
+      value: $inputs.fileSystemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      numberOfMountTargets: $response.body#/FileSystems/0/NumberOfMountTargets
+      lifeCycleState: $response.body#/FileSystems/0/LifeCycleState
+  - stepId: listMountTargets
+    description: >-
+      Enumerate the current mount targets for the file system and branch on
+      whether any remain attached.
+    operationId: describeMountTargets
+    parameters:
+    - name: FileSystemId
+      in: query
+      value: $inputs.fileSystemId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      mountTargets: $response.body#/MountTargets
+    onSuccess:
+    - name: noMountTargets
+      type: goto
+      stepId: deleteFileSystem
+      criteria:
+      - context: $response.body
+        condition: $.MountTargets.length == 0
+        type: jsonpath
+    - name: mountTargetsRemain
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.MountTargets.length > 0
+        type: jsonpath
+  - stepId: deleteFileSystem
+    description: >-
+      Permanently delete the file system now that no mount targets are
+      attached, severing access to its contents.
+    operationId: deleteFileSystem
+    parameters:
+    - name: FileSystemId
+      in: path
+      value: $inputs.fileSystemId
+    successCriteria:
+    - condition: $statusCode == 204
+    outputs:
+      deletedStatusCode: $statusCode
+  outputs:
+    deletedStatusCode: $steps.deleteFileSystem.outputs.deletedStatusCode
