@@ -1,0 +1,770 @@
+{
+  "info": {
+    "_postman_id": "4f52d21c-700a-4f2c-a7e5-ebf1e32655bf",
+    "name": "Amazon EFS Amazon Elastic File System (EFS) API",
+    "description": "Amazon EFS provides a simple, serverless, set-and-forget elastic file system for use with AWS cloud services and on-premises resources.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:03:06.000Z",
+    "updatedAt": "2026-06-05T15:03:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4f52d21c-700a-4f2c-a7e5-ebf1e32655bf"
+  },
+  "item": [
+    {
+      "name": "2015-02-01",
+      "item": [
+        {
+          "name": "file-systems",
+          "item": [
+            {
+              "name": "{FileSystemId}",
+              "item": [
+                {
+                  "name": "Amazon EFS Delete File System",
+                  "id": "1c9e19b0-e3c0-4e69-a4ab-33d9d51c58e3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/file-systems/:FileSystemId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "file-systems",
+                        ":FileSystemId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "bbbea6c1-9e35-4b3d-9cb3-5163f2114b2e",
+                          "key": "FileSystemId",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the file system to delete."
+                        }
+                      ]
+                    },
+                    "description": "Deletes a file system, permanently severing access to its contents. You must delete all mount targets associated with the file system before you can delete it."
+                  },
+                  "response": [
+                    {
+                      "id": "249f27b2-23cf-4b9b-8dfa-833ba6f8bca8",
+                      "name": "Successful deletion, no content returned.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/2015-02-01/file-systems/:FileSystemId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "2015-02-01",
+                            "file-systems",
+                            ":FileSystemId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "FileSystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:03:06.000Z",
+                      "updatedAt": "2026-06-05T15:03:06.000Z",
+                      "uid": "35240-249f27b2-23cf-4b9b-8dfa-833ba6f8bca8"
+                    },
+                    {
+                      "id": "31c73517-c00e-49cf-98e7-c16d10ed24b0",
+                      "name": "File system not found.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/2015-02-01/file-systems/:FileSystemId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "2015-02-01",
+                            "file-systems",
+                            ":FileSystemId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "FileSystemId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:03:06.000Z",
+                      "updatedAt": "2026-06-05T15:03:06.000Z",
+                      "uid": "35240-31c73517-c00e-49cf-98e7-c16d10ed24b0"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-1c9e19b0-e3c0-4e69-a4ab-33d9d51c58e3"
+                }
+              ],
+              "id": "064c07e7-47e6-4bb2-9995-e1376f65d5d9",
+              "createdAt": "2026-06-05T15:03:06.000Z",
+              "updatedAt": "2026-06-05T15:03:06.000Z",
+              "uid": "35240-064c07e7-47e6-4bb2-9995-e1376f65d5d9"
+            },
+            {
+              "name": "Amazon EFS Create File System",
+              "id": "b86fa64a-e493-4699-956e-86e5fa8edecd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"CreationToken\": \"<string>\",\n  \"PerformanceMode\": \"generalPurpose\",\n  \"Encrypted\": \"<boolean>\",\n  \"KmsKeyId\": \"<string>\",\n  \"ThroughputMode\": \"provisioned\",\n  \"ProvisionedThroughputInMibps\": \"<number>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/2015-02-01/file-systems",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "2015-02-01",
+                    "file-systems"
+                  ]
+                },
+                "description": "Creates a new, empty file system. The operation requires a creation token in the request that Amazon EFS uses to ensure idempotent creation."
+              },
+              "response": [
+                {
+                  "id": "d956b3e6-8ac8-4f3c-8de5-f826e672d323",
+                  "name": "Successful response with the created file system details.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"CreationToken\": \"<string>\",\n  \"PerformanceMode\": \"generalPurpose\",\n  \"Encrypted\": \"<boolean>\",\n  \"KmsKeyId\": \"<string>\",\n  \"ThroughputMode\": \"provisioned\",\n  \"ProvisionedThroughputInMibps\": \"<number>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/file-systems",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "file-systems"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"FileSystemId\": \"<string>\",\n  \"FileSystemArn\": \"<string>\",\n  \"CreationToken\": \"<string>\",\n  \"OwnerId\": \"<string>\",\n  \"CreationTime\": \"<dateTime>\",\n  \"LifeCycleState\": \"available\",\n  \"Name\": \"<string>\",\n  \"NumberOfMountTargets\": \"<integer>\",\n  \"SizeInBytes\": {\n    \"Value\": \"<integer>\",\n    \"Timestamp\": \"<dateTime>\",\n    \"ValueInIA\": \"<integer>\",\n    \"ValueInStandard\": \"<integer>\"\n  },\n  \"PerformanceMode\": \"maxIO\",\n  \"Encrypted\": \"<boolean>\",\n  \"KmsKeyId\": \"<string>\",\n  \"ThroughputMode\": \"bursting\",\n  \"ProvisionedThroughputInMibps\": \"<number>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-d956b3e6-8ac8-4f3c-8de5-f826e672d323"
+                },
+                {
+                  "id": "58c7abdc-101a-42c6-8f2e-23176d78bd68",
+                  "name": "Bad request error.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"CreationToken\": \"<string>\",\n  \"PerformanceMode\": \"generalPurpose\",\n  \"Encrypted\": \"<boolean>\",\n  \"KmsKeyId\": \"<string>\",\n  \"ThroughputMode\": \"provisioned\",\n  \"ProvisionedThroughputInMibps\": \"<number>\",\n  \"Tags\": [\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    },\n    {\n      \"Key\": \"<string>\",\n      \"Value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/file-systems",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "file-systems"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-58c7abdc-101a-42c6-8f2e-23176d78bd68"
+                }
+              ],
+              "createdAt": "2026-06-05T15:03:06.000Z",
+              "updatedAt": "2026-06-05T15:03:06.000Z",
+              "uid": "35240-b86fa64a-e493-4699-956e-86e5fa8edecd"
+            },
+            {
+              "name": "Amazon EFS Describe File Systems",
+              "id": "e47551c9-a1f0-4b42-886c-69dfe08827ea",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/2015-02-01/file-systems?CreationToken=<string>&FileSystemId=<string>&MaxItems=<integer>&Marker=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "2015-02-01",
+                    "file-systems"
+                  ],
+                  "query": [
+                    {
+                      "description": "Restricts the list to the file system with this creation token.",
+                      "key": "CreationToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ID of the file system to describe.",
+                      "key": "FileSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of file systems to return.",
+                      "key": "MaxItems",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "An opaque pagination token returned from a previous request.",
+                      "key": "Marker",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns the description of a specific Amazon EFS file system or all file systems owned by the caller."
+              },
+              "response": [
+                {
+                  "id": "f023fbd0-7d92-43f5-8d7d-07a5d351993e",
+                  "name": "Successful response with file system details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/file-systems?CreationToken=<string>&FileSystemId=<string>&MaxItems=<integer>&Marker=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "file-systems"
+                      ],
+                      "query": [
+                        {
+                          "description": "Restricts the list to the file system with this creation token.",
+                          "key": "CreationToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The ID of the file system to describe.",
+                          "key": "FileSystemId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of file systems to return.",
+                          "key": "MaxItems",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "An opaque pagination token returned from a previous request.",
+                          "key": "Marker",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"FileSystems\": [\n    {\n      \"FileSystemId\": \"<string>\",\n      \"FileSystemArn\": \"<string>\",\n      \"CreationToken\": \"<string>\",\n      \"OwnerId\": \"<string>\",\n      \"CreationTime\": \"<dateTime>\",\n      \"LifeCycleState\": \"deleted\",\n      \"Name\": \"<string>\",\n      \"NumberOfMountTargets\": \"<integer>\",\n      \"SizeInBytes\": {\n        \"Value\": \"<integer>\",\n        \"Timestamp\": \"<dateTime>\",\n        \"ValueInIA\": \"<integer>\",\n        \"ValueInStandard\": \"<integer>\"\n      },\n      \"PerformanceMode\": \"maxIO\",\n      \"Encrypted\": \"<boolean>\",\n      \"KmsKeyId\": \"<string>\",\n      \"ThroughputMode\": \"provisioned\",\n      \"ProvisionedThroughputInMibps\": \"<number>\",\n      \"Tags\": [\n        {\n          \"Key\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Key\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"FileSystemId\": \"<string>\",\n      \"FileSystemArn\": \"<string>\",\n      \"CreationToken\": \"<string>\",\n      \"OwnerId\": \"<string>\",\n      \"CreationTime\": \"<dateTime>\",\n      \"LifeCycleState\": \"error\",\n      \"Name\": \"<string>\",\n      \"NumberOfMountTargets\": \"<integer>\",\n      \"SizeInBytes\": {\n        \"Value\": \"<integer>\",\n        \"Timestamp\": \"<dateTime>\",\n        \"ValueInIA\": \"<integer>\",\n        \"ValueInStandard\": \"<integer>\"\n      },\n      \"PerformanceMode\": \"maxIO\",\n      \"Encrypted\": \"<boolean>\",\n      \"KmsKeyId\": \"<string>\",\n      \"ThroughputMode\": \"elastic\",\n      \"ProvisionedThroughputInMibps\": \"<number>\",\n      \"Tags\": [\n        {\n          \"Key\": \"<string>\",\n          \"Value\": \"<string>\"\n        },\n        {\n          \"Key\": \"<string>\",\n          \"Value\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"Marker\": \"<string>\",\n  \"NextMarker\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-f023fbd0-7d92-43f5-8d7d-07a5d351993e"
+                },
+                {
+                  "id": "e0c7511b-d551-4e86-b47f-e8039b31d5a6",
+                  "name": "Bad request error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/file-systems?CreationToken=<string>&FileSystemId=<string>&MaxItems=<integer>&Marker=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "file-systems"
+                      ],
+                      "query": [
+                        {
+                          "description": "Restricts the list to the file system with this creation token.",
+                          "key": "CreationToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The ID of the file system to describe.",
+                          "key": "FileSystemId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of file systems to return.",
+                          "key": "MaxItems",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "An opaque pagination token returned from a previous request.",
+                          "key": "Marker",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-e0c7511b-d551-4e86-b47f-e8039b31d5a6"
+                }
+              ],
+              "createdAt": "2026-06-05T15:03:06.000Z",
+              "updatedAt": "2026-06-05T15:03:06.000Z",
+              "uid": "35240-e47551c9-a1f0-4b42-886c-69dfe08827ea"
+            }
+          ],
+          "id": "aa6b4900-2ae1-45fa-b50b-5ca8cb3a0f1c",
+          "createdAt": "2026-06-05T15:03:06.000Z",
+          "updatedAt": "2026-06-05T15:03:06.000Z",
+          "uid": "35240-aa6b4900-2ae1-45fa-b50b-5ca8cb3a0f1c"
+        },
+        {
+          "name": "mount-targets",
+          "item": [
+            {
+              "name": "Amazon EFS Create Mount Target",
+              "id": "19c315d6-b708-451c-858c-16f80693a7da",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"FileSystemId\": \"<string>\",\n  \"SubnetId\": \"<string>\",\n  \"IpAddress\": \"<string>\",\n  \"SecurityGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/2015-02-01/mount-targets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "2015-02-01",
+                    "mount-targets"
+                  ]
+                },
+                "description": "Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target."
+              },
+              "response": [
+                {
+                  "id": "36f419b0-0ee8-4238-8594-4ac515271741",
+                  "name": "Successful response with the mount target details.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"FileSystemId\": \"<string>\",\n  \"SubnetId\": \"<string>\",\n  \"IpAddress\": \"<string>\",\n  \"SecurityGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/mount-targets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "mount-targets"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"MountTargetId\": \"<string>\",\n  \"FileSystemId\": \"<string>\",\n  \"SubnetId\": \"<string>\",\n  \"LifeCycleState\": \"<string>\",\n  \"IpAddress\": \"<string>\",\n  \"NetworkInterfaceId\": \"<string>\",\n  \"AvailabilityZoneId\": \"<string>\",\n  \"AvailabilityZoneName\": \"<string>\",\n  \"VpcId\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-36f419b0-0ee8-4238-8594-4ac515271741"
+                },
+                {
+                  "id": "38cc8538-963c-4a2c-83c7-92bb0938d6db",
+                  "name": "Bad request error.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"FileSystemId\": \"<string>\",\n  \"SubnetId\": \"<string>\",\n  \"IpAddress\": \"<string>\",\n  \"SecurityGroups\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/mount-targets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "mount-targets"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-38cc8538-963c-4a2c-83c7-92bb0938d6db"
+                }
+              ],
+              "createdAt": "2026-06-05T15:03:06.000Z",
+              "updatedAt": "2026-06-05T15:03:06.000Z",
+              "uid": "35240-19c315d6-b708-451c-858c-16f80693a7da"
+            },
+            {
+              "name": "Amazon EFS Describe Mount Targets",
+              "id": "8e45326f-2630-475a-9ef0-30b0a581afb6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/2015-02-01/mount-targets?FileSystemId=<string>&MountTargetId=<string>&MaxItems=<integer>&Marker=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "2015-02-01",
+                    "mount-targets"
+                  ],
+                  "query": [
+                    {
+                      "description": "The ID of the file system whose mount targets to list.",
+                      "key": "FileSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ID of the mount target to describe.",
+                      "key": "MountTargetId",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The maximum number of mount targets to return.",
+                      "key": "MaxItems",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "An opaque pagination token returned from a previous request.",
+                      "key": "Marker",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns the descriptions of all the current mount targets for a file system."
+              },
+              "response": [
+                {
+                  "id": "4bacdeab-2a39-4895-82d3-d49d160865e8",
+                  "name": "Successful response with mount target details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/mount-targets?FileSystemId=<string>&MountTargetId=<string>&MaxItems=<integer>&Marker=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "mount-targets"
+                      ],
+                      "query": [
+                        {
+                          "description": "The ID of the file system whose mount targets to list.",
+                          "key": "FileSystemId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The ID of the mount target to describe.",
+                          "key": "MountTargetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of mount targets to return.",
+                          "key": "MaxItems",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "An opaque pagination token returned from a previous request.",
+                          "key": "Marker",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"MountTargets\": [\n    {\n      \"MountTargetId\": \"<string>\",\n      \"FileSystemId\": \"<string>\",\n      \"SubnetId\": \"<string>\",\n      \"LifeCycleState\": \"<string>\",\n      \"IpAddress\": \"<string>\",\n      \"NetworkInterfaceId\": \"<string>\",\n      \"AvailabilityZoneId\": \"<string>\",\n      \"AvailabilityZoneName\": \"<string>\",\n      \"VpcId\": \"<string>\"\n    },\n    {\n      \"MountTargetId\": \"<string>\",\n      \"FileSystemId\": \"<string>\",\n      \"SubnetId\": \"<string>\",\n      \"LifeCycleState\": \"<string>\",\n      \"IpAddress\": \"<string>\",\n      \"NetworkInterfaceId\": \"<string>\",\n      \"AvailabilityZoneId\": \"<string>\",\n      \"AvailabilityZoneName\": \"<string>\",\n      \"VpcId\": \"<string>\"\n    }\n  ],\n  \"Marker\": \"<string>\",\n  \"NextMarker\": \"<string>\"\n}",
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-4bacdeab-2a39-4895-82d3-d49d160865e8"
+                },
+                {
+                  "id": "d5dcc013-80a1-46c1-b315-cfd9c1020f1c",
+                  "name": "Bad request error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/2015-02-01/mount-targets?FileSystemId=<string>&MountTargetId=<string>&MaxItems=<integer>&Marker=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "2015-02-01",
+                        "mount-targets"
+                      ],
+                      "query": [
+                        {
+                          "description": "The ID of the file system whose mount targets to list.",
+                          "key": "FileSystemId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The ID of the mount target to describe.",
+                          "key": "MountTargetId",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of mount targets to return.",
+                          "key": "MaxItems",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "An opaque pagination token returned from a previous request.",
+                          "key": "Marker",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:03:06.000Z",
+                  "updatedAt": "2026-06-05T15:03:06.000Z",
+                  "uid": "35240-d5dcc013-80a1-46c1-b315-cfd9c1020f1c"
+                }
+              ],
+              "createdAt": "2026-06-05T15:03:06.000Z",
+              "updatedAt": "2026-06-05T15:03:06.000Z",
+              "uid": "35240-8e45326f-2630-475a-9ef0-30b0a581afb6"
+            }
+          ],
+          "id": "a6699a0b-bf5f-4d76-8e44-c70dbfc20e20",
+          "createdAt": "2026-06-05T15:03:06.000Z",
+          "updatedAt": "2026-06-05T15:03:06.000Z",
+          "uid": "35240-a6699a0b-bf5f-4d76-8e44-c70dbfc20e20"
+        }
+      ],
+      "id": "d2ede840-1ba2-431b-8844-f3f8a7f3c0d5",
+      "createdAt": "2026-06-05T15:03:06.000Z",
+      "updatedAt": "2026-06-05T15:03:06.000Z",
+      "uid": "35240-d2ede840-1ba2-431b-8844-f3f8a7f3c0d5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://elasticfilesystem.amazonaws.com"
+    }
+  ]
+}

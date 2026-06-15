@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon EFS Amazon Elastic File System (EFS) API",
+    "version": "2015-02-01"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "2015 02 01",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon EFS Describe File Systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://elasticfilesystem.amazonaws.com/2015-02-01/file-systems",
+            "params": [
+              {
+                "name": "CreationToken",
+                "value": "example-string",
+                "type": "query",
+                "description": "Restricts the list to the file system with this creation token."
+              },
+              {
+                "name": "FileSystemId",
+                "value": "example-id-1234",
+                "type": "query",
+                "description": "The ID of the file system to describe."
+              },
+              {
+                "name": "MaxItems",
+                "value": "1",
+                "type": "query",
+                "description": "The maximum number of file systems to return."
+              },
+              {
+                "name": "Marker",
+                "value": "example-string",
+                "type": "query",
+                "description": "An opaque pagination token returned from a previous request."
+              }
+            ]
+          },
+          "docs": "Returns the description of a specific Amazon EFS file system or all file systems owned by the caller."
+        },
+        {
+          "info": {
+            "name": "Amazon EFS Create File System",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://elasticfilesystem.amazonaws.com/2015-02-01/file-systems",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new, empty file system. The operation requires a creation token in the request that Amazon EFS uses to ensure idempotent creation."
+        },
+        {
+          "info": {
+            "name": "Amazon EFS Delete File System",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://elasticfilesystem.amazonaws.com/2015-02-01/file-systems/:FileSystemId",
+            "params": [
+              {
+                "name": "FileSystemId",
+                "value": "example-id-1234",
+                "type": "path",
+                "description": "The ID of the file system to delete."
+              }
+            ]
+          },
+          "docs": "Deletes a file system, permanently severing access to its contents. You must delete all mount targets associated with the file system before you can delete it."
+        },
+        {
+          "info": {
+            "name": "Amazon EFS Describe Mount Targets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://elasticfilesystem.amazonaws.com/2015-02-01/mount-targets",
+            "params": [
+              {
+                "name": "FileSystemId",
+                "value": "example-id-1234",
+                "type": "query",
+                "description": "The ID of the file system whose mount targets to list."
+              },
+              {
+                "name": "MountTargetId",
+                "value": "example-id-1234",
+                "type": "query",
+                "description": "The ID of the mount target to describe."
+              },
+              {
+                "name": "MaxItems",
+                "value": "1",
+                "type": "query",
+                "description": "The maximum number of mount targets to return."
+              },
+              {
+                "name": "Marker",
+                "value": "example-string",
+                "type": "query",
+                "description": "An opaque pagination token returned from a previous request."
+              }
+            ]
+          },
+          "docs": "Returns the descriptions of all the current mount targets for a file system."
+        },
+        {
+          "info": {
+            "name": "Amazon EFS Create Mount Target",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://elasticfilesystem.amazonaws.com/2015-02-01/mount-targets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
