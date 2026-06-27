@@ -49,32 +49,29 @@ apis:
         url: https://docs.aws.amazon.com/efs/latest/ug/security.html
       - type: JSONStructure
         url: json-structure/amazon-efs-filesystem-structure.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-efs-filesystem-example.json
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-efs/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/amazon-efs-decommission-file-system-workflow.yml
-        name: Amazon EFS Decommission File System
-        summary: Confirm a file system has no mount targets, then delete the file system.
-      - url: arazzo/amazon-efs-find-or-create-file-system-workflow.yml
-        name: Amazon EFS Find or Create File System
-        summary: Look up a file system by creation token and create it only if it does not already exist.
-      - url: arazzo/amazon-efs-inspect-file-system-topology-workflow.yml
-        name: Amazon EFS Inspect File System Topology
-        summary: Describe a file system and enumerate its mount targets to audit its network topology.
-      - url: arazzo/amazon-efs-multi-az-mount-targets-workflow.yml
-        name: Amazon EFS Multi-AZ Mount Targets
-        summary: Create a file system, wait until available, then attach mount targets in two Availability Zones.
-      - url: arazzo/amazon-efs-provision-file-system-workflow.yml
-        name: Amazon EFS Provision File System
-        summary: Create an EFS file system, wait for it to become available, then attach a mount target.
-      - url: arazzo/amazon-efs-provision-mount-target-workflow.yml
-        name: Amazon EFS Provision Mount Target
-        summary: Verify a file system is available, create a mount target, then poll until the mount target is available.
+  - type: Arazzo
+    url: arazzo/amazon-efs-decommission-file-system-workflow.yml
+    name: Amazon EFS Decommission File System
+  - type: Arazzo
+    url: arazzo/amazon-efs-find-or-create-file-system-workflow.yml
+    name: Amazon EFS Find or Create File System
+  - type: Arazzo
+    url: arazzo/amazon-efs-inspect-file-system-topology-workflow.yml
+    name: Amazon EFS Inspect File System Topology
+  - type: Arazzo
+    url: arazzo/amazon-efs-multi-az-mount-targets-workflow.yml
+    name: Amazon EFS Multi-AZ Mount Targets
+  - type: Arazzo
+    url: arazzo/amazon-efs-provision-file-system-workflow.yml
+    name: Amazon EFS Provision File System
+  - type: Arazzo
+    url: arazzo/amazon-efs-provision-mount-target-workflow.yml
+    name: Amazon EFS Provision Mount Target
   - type: Portal
     url: https://aws.amazon.com/
   - type: DeveloperPortal
@@ -93,7 +90,7 @@ common:
     url: https://github.com/aws
   - type: Console
     url: https://console.aws.amazon.com/
-  - type: SignUp
+  - type: Signup
     url: https://portal.aws.amazon.com/billing/signup
   - type: Login
     url: https://signin.aws.amazon.com/
