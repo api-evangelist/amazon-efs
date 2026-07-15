@@ -52,6 +52,8 @@ apis:
       - type: Examples
         url: examples/amazon-efs-filesystem-example.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-efs-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-efs-trust-center.yml
   - type: VulnerabilityDisclosure
