@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Amazon EFS Amazon Elastic File System (EFS) API
+  title: Amazon EFS Amazon Elastic File System (EFS) 2015 02 01 API
   description: Amazon EFS provides a simple, serverless, set-and-forget elastic file system for use with AWS cloud services and on-premises resources.
   version: '2015-02-01'
   contact:
@@ -13,6 +13,8 @@ info:
 servers:
 - url: https://elasticfilesystem.amazonaws.com
   description: Amazon EFS API endpoint
+tags:
+- name: 2015 02 01
 paths:
   /2015-02-01/file-systems:
     post:
@@ -449,5 +451,3 @@ components:
       name: Authorization
       in: header
       description: AWS Signature Version 4 authentication.
-tags:
-- name: 2015 02 01
