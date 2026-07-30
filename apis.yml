@@ -3,6 +3,19 @@ description: >-
   Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file system for use with AWS
   cloud services and on-premises resources. EFS is built to scale on demand to petabytes without disrupting
   applications, growing and shrinking automatically as you add and remove files.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/efs/
 created: '2024-01-15'
@@ -17,40 +30,37 @@ tags:
   - Serverless
   - Storage
 apis:
-  - name: Amazon EFS API
-    description: API for managing Amazon EFS file systems, mount targets, and related resources.
-    image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
-    url: https://aws.amazon.com/efs/
-    baseURL: https://elasticfilesystem.amazonaws.com
-    properties:
-      - type: Documentation
-        url: https://docs.aws.amazon.com/efs/latest/ug/
-      - type: OpenAPI
-        url: openapi/amazon-efs-openapi.yml
-      - type: OpenAPI
-        url: https://api.apis.guru/v2/specs/amazonaws.com/elasticfilesystem/2015-02-01/openapi.yaml
-      - type: JSONSchema
-        url: json-schema/amazon-efs-filesystem-schema.json
-      - type: JSONLD
-        url: json-ld/amazon-efs-context.jsonld
-      - type: Pricing
-        url: https://aws.amazon.com/efs/pricing/
-      - type: GettingStarted
-        url: https://aws.amazon.com/efs/getting-started/
-      - type: FAQ
-        url: https://aws.amazon.com/efs/faqs/
-      - type: Documentation
-        url: https://docs.aws.amazon.com/efs/latest/ug/
-      - type: APIReference
-        url: https://docs.aws.amazon.com/efs/latest/ug/API_Reference.html
-      - type: Documentation
-        url: https://docs.aws.amazon.com/cli/latest/reference/efs/
-      - type: Security
-        url: https://docs.aws.amazon.com/efs/latest/ug/security.html
-      - type: JSONStructure
-        url: json-structure/amazon-efs-filesystem-structure.json
-      - type: Examples
-        url: examples/amazon-efs-filesystem-example.json
+- aid: amazon-efs:amazon-efs-2015-02-01-api
+  name: Amazon EFS 2015 02 01 API
+  description: The 2015 02 01 API from Amazon EFS — 3 operation(s) for 2015 02 01.
+  baseURL: https://elasticfilesystem.amazonaws.com
+  tags:
+  - 2015 02 01
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-efs-2015-02-01-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/efs/latest/ug/
+  - type: JSONSchema
+    url: json-schema/amazon-efs-filesystem-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-efs-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/efs/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/efs/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/efs/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/efs/latest/ug/API_Reference.html
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/efs/
+  - type: Security
+    url: https://docs.aws.amazon.com/efs/latest/ug/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-efs-filesystem-structure.json
+  - type: Examples
+    url: examples/amazon-efs-filesystem-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/amazon-efs-agentic-access.yml
