@@ -35,7 +35,8 @@ apis:
   name: Amazon EFS 2015 02 01 API
   description: The 2015 02 01 API from Amazon EFS — 3 operation(s) for 2015 02 01.
   baseURL: https://elasticfilesystem.amazonaws.com
-  tags:
+  tags: []
+  tags_raw:
   - 2015 02 01
   properties:
   - type: OpenAPI
