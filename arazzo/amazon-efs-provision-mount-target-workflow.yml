@@ -12,8 +12,8 @@ info:
     the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: amazonEfsApi
-  url: ../openapi/amazon-efs-openapi.yml
+- name: src20150201Api
+  url: ../openapi/amazon-efs-2015-02-01-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: provision-mount-target
