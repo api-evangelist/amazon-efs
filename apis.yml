@@ -3,6 +3,18 @@ description: >-
   Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file system for use with AWS
   cloud services and on-premises resources. EFS is built to scale on demand to petabytes without disrupting
   applications, growing and shrinking automatically as you add and remove files.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 specificationVersion: '0.23'
 accessModel:
   pricing: freemium
