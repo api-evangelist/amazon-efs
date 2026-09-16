@@ -1,8 +1,8 @@
 name: Amazon EFS
-description: >-
-  Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file system for use with AWS
-  cloud services and on-premises resources. EFS is built to scale on demand to petabytes without disrupting
-  applications, growing and shrinking automatically as you add and remove files.
+description: Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file
+  system for use with AWS cloud services and on-premises resources. EFS is built to scale on demand to
+  petabytes without disrupting applications, growing and shrinking automatically as you add and remove
+  files.
 deliveryModel:
   model: saas
   open_source: false
@@ -33,16 +33,16 @@ accessModel:
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 url: https://aws.amazon.com/efs/
 created: '2024-01-15'
-modified: '2026-05-19'
+modified: '2026-09-16'
 tags:
-  - Amazon Web Services
-  - AWS
-  - EFS
-  - Elastic File System
-  - File Storage
-  - NFS
-  - Serverless
-  - Storage
+- Amazon Web Services
+- AWS
+- EFS
+- Elastic File System
+- File Storage
+- NFS
+- Serverless
+- Storage
 apis:
 - aid: amazon-efs:amazon-efs-2015-02-01-api
   name: Amazon EFS 2015 02 01 API
@@ -77,127 +77,131 @@ apis:
   - type: Examples
     url: examples/amazon-efs-filesystem-example.json
 common:
-  - type: AgenticAccess
-    url: agentic-access/amazon-efs-agentic-access.yml
-  - type: TrustCenter
-    url: security/amazon-efs-trust-center.yml
-  - type: VulnerabilityDisclosure
-    url: security/amazon-efs-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/amazon-efs-domain-security.yml
-  - type: Authentication
-    url: authentication/amazon-efs-authentication.yml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/amazon-efs/overview
-  - type: Arazzo
-    url: arazzo/amazon-efs-decommission-file-system-workflow.yml
-    name: Amazon EFS Decommission File System
-  - type: Arazzo
-    url: arazzo/amazon-efs-find-or-create-file-system-workflow.yml
-    name: Amazon EFS Find or Create File System
-  - type: Arazzo
-    url: arazzo/amazon-efs-inspect-file-system-topology-workflow.yml
-    name: Amazon EFS Inspect File System Topology
-  - type: Arazzo
-    url: arazzo/amazon-efs-multi-az-mount-targets-workflow.yml
-    name: Amazon EFS Multi-AZ Mount Targets
-  - type: Arazzo
-    url: arazzo/amazon-efs-provision-file-system-workflow.yml
-    name: Amazon EFS Provision File System
-  - type: Arazzo
-    url: arazzo/amazon-efs-provision-mount-target-workflow.yml
-    name: Amazon EFS Provision Mount Target
-  - type: Portal
-    url: https://aws.amazon.com/
-  - type: DeveloperPortal
-    url: https://aws.amazon.com/
-  - type: Documentation
-    url: https://docs.aws.amazon.com/
-  - type: TermsOfService
-    url: https://aws.amazon.com/service-terms/
-  - type: PrivacyPolicy
-    url: https://aws.amazon.com/privacy/
-  - type: Support
-    url: https://aws.amazon.com/support/
-  - type: Blog
-    url: https://aws.amazon.com/blogs/
-  - type: GitHubOrganization
-    url: https://github.com/aws
-  - type: Console
-    url: https://console.aws.amazon.com/
-  - type: Signup
-    url: https://portal.aws.amazon.com/billing/signup
-  - type: Login
-    url: https://signin.aws.amazon.com/
-  - type: StatusPage
-    url: https://status.aws.amazon.com/
-  - type: KnowledgeCenter
-    url: https://repost.aws/knowledge-center
-  - type: YouTube
-    url: https://www.youtube.com/user/AmazonWebServices
-  - type: StackOverflow
-    url: https://stackoverflow.com/questions/tagged/amazon-web-services
-  - type: Contact
-    url: https://aws.amazon.com/contact-us/
-  - type: Security
-    url: https://aws.amazon.com/security/
-  - type: Compliance
-    url: https://aws.amazon.com/compliance/
-  - type: Features
-    data:
-      - name: Elastic Scalability
-        description: Automatically grows and shrinks as you add and remove files with no provisioning required.
-      - name: Multiple Storage Classes
-        description: Standard, Infrequent Access, and Archive storage classes with automatic lifecycle management.
-      - name: Multi-AZ Replication
-        description: Data automatically replicated across multiple Availability Zones for 99.999999999% durability.
-      - name: Concurrent Access
-        description: Thousands of EC2 instances and Lambda functions can access the same file system simultaneously.
-      - name: EFS Access Points
-        description: Application-specific entry points with customized directory access and POSIX permissions.
-      - name: AWS Backup Integration
-        description: Centralized backup management for EFS file systems with policy-based retention.
-  - type: UseCases
-    data:
-      - name: Containerized Application Storage
-        description: Persistent shared storage for containerized applications running on ECS or EKS.
-      - name: Machine Learning
-        description: Shared training data storage accessible simultaneously by multiple compute instances.
-      - name: Content Management
-        description: Shared file storage for web servers and CMS platforms requiring concurrent file access.
-      - name: DevOps and Code Sharing
-        description: Centralized code and configuration storage accessible by development teams and CI/CD pipelines.
-      - name: Big Data Analytics
-        description: High-throughput shared storage for analytics workloads requiring parallel data access.
-  - type: Integrations
-    data:
-      - name: Amazon EC2
-        description: Mount EFS file systems on EC2 instances using the NFS protocol.
-      - name: Amazon ECS
-        description: Provide persistent shared storage for ECS tasks with EFS volume drivers.
-      - name: Amazon EKS
-        description: Use the Amazon EFS CSI driver to mount EFS file systems as Kubernetes persistent volumes.
-      - name: AWS Lambda
-        description: Access EFS file systems from Lambda functions for shared data storage and large model loading.
-      - name: AWS Backup
-        description: Automated backup of EFS file systems with centralized policy management.
-  - type: SpectralRules
-    url: rules/amazon-efs-spectral-rules.yml
-  - type: Vocabulary
-    url: vocabulary/amazon-efs-vocabulary.yaml
-  - type: Integrations
-    url: https://aws.amazon.com/marketplace
+- type: Website
+  url: https://amazon.com
+- type: AgenticAccess
+  url: agentic-access/amazon-efs-agentic-access.yml
+- type: TrustCenter
+  url: security/amazon-efs-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/amazon-efs-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-efs-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-efs-authentication.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/amazon-efs/overview
+- type: Arazzo
+  url: arazzo/amazon-efs-decommission-file-system-workflow.yml
+  name: Amazon EFS Decommission File System
+- type: Arazzo
+  url: arazzo/amazon-efs-find-or-create-file-system-workflow.yml
+  name: Amazon EFS Find or Create File System
+- type: Arazzo
+  url: arazzo/amazon-efs-inspect-file-system-topology-workflow.yml
+  name: Amazon EFS Inspect File System Topology
+- type: Arazzo
+  url: arazzo/amazon-efs-multi-az-mount-targets-workflow.yml
+  name: Amazon EFS Multi-AZ Mount Targets
+- type: Arazzo
+  url: arazzo/amazon-efs-provision-file-system-workflow.yml
+  name: Amazon EFS Provision File System
+- type: Arazzo
+  url: arazzo/amazon-efs-provision-mount-target-workflow.yml
+  name: Amazon EFS Provision Mount Target
+- type: Portal
+  url: https://aws.amazon.com/
+- type: DeveloperPortal
+  url: https://aws.amazon.com/
+- type: Documentation
+  url: https://docs.aws.amazon.com/
+- type: TermsOfService
+  url: https://aws.amazon.com/service-terms/
+- type: PrivacyPolicy
+  url: https://aws.amazon.com/privacy/
+- type: Support
+  url: https://aws.amazon.com/support/
+- type: Blog
+  url: https://aws.amazon.com/blogs/
+- type: GitHubOrganization
+  url: https://github.com/aws
+- type: Console
+  url: https://console.aws.amazon.com/
+- type: Signup
+  url: https://portal.aws.amazon.com/billing/signup
+- type: Login
+  url: https://signin.aws.amazon.com/
+- type: StatusPage
+  url: https://status.aws.amazon.com/
+- type: KnowledgeCenter
+  url: https://repost.aws/knowledge-center
+- type: YouTube
+  url: https://www.youtube.com/user/AmazonWebServices
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/amazon-web-services
+- type: Contact
+  url: https://aws.amazon.com/contact-us/
+- type: Security
+  url: https://aws.amazon.com/security/
+- type: Compliance
+  url: https://aws.amazon.com/compliance/
+- type: Features
+  data:
+  - name: Elastic Scalability
+    description: Automatically grows and shrinks as you add and remove files with no provisioning required.
+  - name: Multiple Storage Classes
+    description: Standard, Infrequent Access, and Archive storage classes with automatic lifecycle management.
+  - name: Multi-AZ Replication
+    description: Data automatically replicated across multiple Availability Zones for 99.999999999% durability.
+  - name: Concurrent Access
+    description: Thousands of EC2 instances and Lambda functions can access the same file system simultaneously.
+  - name: EFS Access Points
+    description: Application-specific entry points with customized directory access and POSIX permissions.
+  - name: AWS Backup Integration
+    description: Centralized backup management for EFS file systems with policy-based retention.
+- type: UseCases
+  data:
+  - name: Containerized Application Storage
+    description: Persistent shared storage for containerized applications running on ECS or EKS.
+  - name: Machine Learning
+    description: Shared training data storage accessible simultaneously by multiple compute instances.
+  - name: Content Management
+    description: Shared file storage for web servers and CMS platforms requiring concurrent file access.
+  - name: DevOps and Code Sharing
+    description: Centralized code and configuration storage accessible by development teams and CI/CD
+      pipelines.
+  - name: Big Data Analytics
+    description: High-throughput shared storage for analytics workloads requiring parallel data access.
+- type: Integrations
+  data:
+  - name: Amazon EC2
+    description: Mount EFS file systems on EC2 instances using the NFS protocol.
+  - name: Amazon ECS
+    description: Provide persistent shared storage for ECS tasks with EFS volume drivers.
+  - name: Amazon EKS
+    description: Use the Amazon EFS CSI driver to mount EFS file systems as Kubernetes persistent volumes.
+  - name: AWS Lambda
+    description: Access EFS file systems from Lambda functions for shared data storage and large model
+      loading.
+  - name: AWS Backup
+    description: Automated backup of EFS file systems with centralized policy management.
+- type: SpectralRules
+  url: rules/amazon-efs-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-efs-vocabulary.yaml
+- type: Integrations
+  url: https://aws.amazon.com/marketplace
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
 integrations:
-  - name: Agent Mode
-  - name: Sign in
-  - name: Become a Channel Partner
-  - name: Resources
-  - name: Sell in AWS Marketplace
-  - name: Why AWS Marketplace?
-  - name: Get started in AWS Marketplace
-  - name: Manage Your Account
+- name: Agent Mode
+- name: Sign in
+- name: Become a Channel Partner
+- name: Resources
+- name: Sell in AWS Marketplace
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Manage Your Account
 x-parent: aws
 x-relationship: product
