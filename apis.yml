@@ -44,16 +44,46 @@ tags:
 - Serverless
 - Storage
 apis:
-- aid: amazon-efs:amazon-efs-2015-02-01-api
-  name: Amazon EFS 2015 02 01 API
-  description: The 2015 02 01 API from Amazon EFS — 3 operation(s) for 2015 02 01.
+- aid: amazon-efs:amazon-efs-mount-targets-api
+  name: Amazon EFS Mount Targets API
+  description: The Mount Targets API from Amazon EFS — 1 operation(s) for mount targets.
   baseURL: https://elasticfilesystem.amazonaws.com
-  tags: []
-  tags_raw:
-  - 2015 02 01
+  tags:
+  - Mount Targets
   properties:
   - type: OpenAPI
-    url: openapi/amazon-efs-2015-02-01-api-openapi.yml
+    url: openapi/amazon-efs-mount-targets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/efs/latest/ug/
+  - type: JSONSchema
+    url: json-schema/amazon-efs-filesystem-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-efs-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/efs/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/efs/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/efs/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/efs/latest/ug/API_Reference.html
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/efs/
+  - type: Security
+    url: https://docs.aws.amazon.com/efs/latest/ug/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-efs-filesystem-structure.json
+  - type: Examples
+    url: examples/amazon-efs-filesystem-example.json
+- aid: amazon-efs:amazon-efs-filesystems-api
+  name: Amazon EFS Filesystems API
+  description: The Filesystems API from Amazon EFS — 2 operation(s) for filesystems.
+  baseURL: https://elasticfilesystem.amazonaws.com
+  tags:
+  - Filesystems
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-efs-filesystems-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/efs/latest/ug/
   - type: JSONSchema
@@ -78,7 +108,7 @@ apis:
     url: examples/amazon-efs-filesystem-example.json
 common:
 - type: Website
-  url: https://amazon.com
+  url: https://aws.amazon.com/efs/
 - type: AgenticAccess
   url: agentic-access/amazon-efs-agentic-access.yml
 - type: TrustCenter
@@ -203,5 +233,5 @@ integrations:
 - name: Why AWS Marketplace?
 - name: Get started in AWS Marketplace
 - name: Manage Your Account
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

@@ -4,15 +4,26 @@
     "_original/amazon-efs-openapi.yml"
   ],
   "outputs": [
-    "amazon-efs-2015-02-01-api-openapi.yml"
+    "amazon-efs-file-systems-api-openapi.yml",
+    "amazon-efs-mount-targets-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "amazon-efs-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "amazon-efs-openapi.yml: tagged paths POST /2015-02-01/file-systems -> File Systems",
+    "amazon-efs-openapi.yml: tagged paths GET /2015-02-01/file-systems -> File Systems",
+    "amazon-efs-openapi.yml: tagged paths DELETE /2015-02-01/file-systems/{FileSystemId} -> File Systems",
+    "amazon-efs-openapi.yml: tagged paths POST /2015-02-01/mount-targets -> Mount Targets",
+    "amazon-efs-openapi.yml: tagged paths GET /2015-02-01/mount-targets -> Mount Targets",
+    "amazon-efs-openapi.yml: declared missing tag: File Systems",
+    "amazon-efs-openapi.yml: declared missing tag: Mount Targets",
+    "superseded outputs removed: amazon-efs-2015-02-01-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 2 total)"
   ],
   "skipped": [
     "amazon-efs-2015-02-01-api-openapi.yml: previously refined output, superseded by openapi/_original/"

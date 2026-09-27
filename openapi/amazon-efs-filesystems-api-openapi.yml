@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon EFS Amazon Elastic File System (EFS) 2015 02 01 API
+  title: Amazon EFS Amazon Elastic File System (EFS) File Systems API
   description: Amazon EFS provides a simple, serverless, set-and-forget elastic file system for use with AWS cloud services and on-premises resources.
   version: '2015-02-01'
   contact:
@@ -14,7 +14,7 @@ servers:
 - url: https://elasticfilesystem.amazonaws.com
   description: Amazon EFS API endpoint
 tags:
-- name: 2015 02 01
+- name: Filesystems
 paths:
   /2015-02-01/file-systems:
     post:
@@ -90,7 +90,7 @@ paths:
         '400':
           description: Bad request error.
       tags:
-      - 2015 02 01
+      - Filesystems
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -142,7 +142,7 @@ paths:
         '400':
           description: Bad request error.
       tags:
-      - 2015 02 01
+      - Filesystems
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
@@ -165,146 +165,12 @@ paths:
         '404':
           description: File system not found.
       tags:
-      - 2015 02 01
-      x-microcks-operation:
-        delay: 0
-        dispatcher: FALLBACK
-  /2015-02-01/mount-targets:
-    post:
-      operationId: createMountTarget
-      summary: Amazon EFS Create Mount Target
-      description: Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-              - FileSystemId
-              - SubnetId
-              properties:
-                FileSystemId:
-                  type: string
-                  description: The ID of the file system for which to create the mount target.
-                SubnetId:
-                  type: string
-                  description: The ID of the subnet to add the mount target in.
-                IpAddress:
-                  type: string
-                  description: A valid IPv4 address within the subnet's address range.
-                SecurityGroups:
-                  type: array
-                  items:
-                    type: string
-                  description: Up to five VPC security group IDs to associate with the mount target.
-            examples:
-              createMountTargetRequestExample:
-                summary: Default createMountTarget request
-                x-microcks-default: true
-                value: {}
-      responses:
-        '200':
-          description: Successful response with the mount target details.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MountTarget'
-              examples:
-                createMountTarget200Example:
-                  summary: Default createMountTarget 200 response
-                  x-microcks-default: true
-                  value:
-                    MountTargetId: example-id-1234
-                    FileSystemId: example-id-1234
-                    SubnetId: example-id-1234
-                    LifeCycleState: available
-                    IpAddress: example-string
-        '400':
-          description: Bad request error.
-      tags:
-      - 2015 02 01
-      x-microcks-operation:
-        delay: 0
-        dispatcher: FALLBACK
-    get:
-      operationId: describeMountTargets
-      summary: Amazon EFS Describe Mount Targets
-      description: Returns the descriptions of all the current mount targets for a file system.
-      parameters:
-      - name: FileSystemId
-        in: query
-        schema:
-          type: string
-        description: The ID of the file system whose mount targets to list.
-        example: example-id-1234
-      - name: MountTargetId
-        in: query
-        schema:
-          type: string
-        description: The ID of the mount target to describe.
-        example: example-id-1234
-      - name: MaxItems
-        in: query
-        schema:
-          type: integer
-        description: The maximum number of mount targets to return.
-        example: 1
-      - name: Marker
-        in: query
-        schema:
-          type: string
-        description: An opaque pagination token returned from a previous request.
-        example: example-string
-      responses:
-        '200':
-          description: Successful response with mount target details.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  MountTargets:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/MountTarget'
-                  Marker:
-                    type: string
-                  NextMarker:
-                    type: string
-              examples:
-                describeMountTargets200Example:
-                  summary: Default describeMountTargets 200 response
-                  x-microcks-default: true
-                  value:
-                    MountTargets:
-                    - example-string
-                    Marker: example-string
-                    NextMarker: example-string
-        '400':
-          description: Bad request error.
-      tags:
-      - 2015 02 01
+      - Filesystems
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
 components:
   schemas:
-    DescribeFileSystemsResponse:
-      type: object
-      properties:
-        FileSystems:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileSystem'
-          example:
-          - example-string
-        Marker:
-          type: string
-          example: example-string
-        NextMarker:
-          type: string
-          example: example-string
     FileSystem:
       type: object
       properties:
@@ -406,45 +272,21 @@ components:
           example:
           - Key: example-string
             Value: example-string
-    MountTarget:
+    DescribeFileSystemsResponse:
       type: object
       properties:
-        MountTargetId:
+        FileSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileSystem'
+          example:
+          - example-string
+        Marker:
           type: string
-          description: System-assigned mount target ID.
-          example: example-id-1234
-        FileSystemId:
-          type: string
-          description: The ID of the file system for which the mount target is intended.
-          example: example-id-1234
-        SubnetId:
-          type: string
-          description: The ID of the subnet.
-          example: example-id-1234
-        LifeCycleState:
-          type: string
-          description: Lifecycle state of the mount target.
-          example: available
-        IpAddress:
-          type: string
-          description: Address at which the file system is mountable.
           example: example-string
-        NetworkInterfaceId:
+        NextMarker:
           type: string
-          description: The ID of the network interface.
-          example: example-id-1234
-        AvailabilityZoneId:
-          type: string
-          description: The unique and consistent identifier of the Availability Zone.
-          example: example-id-1234
-        AvailabilityZoneName:
-          type: string
-          description: The name of the Availability Zone.
-          example: example-resource-name
-        VpcId:
-          type: string
-          description: The Virtual Private Cloud ID.
-          example: example-id-1234
+          example: example-string
   securitySchemes:
     aws_sigv4:
       type: apiKey
