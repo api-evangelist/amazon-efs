@@ -22,10 +22,11 @@
     "amazon-efs-openapi.yml: tagged paths GET /2015-02-01/mount-targets -> Mount Targets",
     "amazon-efs-openapi.yml: declared missing tag: File Systems",
     "amazon-efs-openapi.yml: declared missing tag: Mount Targets",
-    "superseded outputs removed: amazon-efs-2015-02-01-api-openapi.yml",
-    "apis.yml register: written (+2 apis, 2 total)"
+    "superseded outputs removed: amazon-efs-filesystems-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 2 total)"
   ],
   "skipped": [
-    "amazon-efs-2015-02-01-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "amazon-efs-filesystems-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-efs-mount-targets-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }
