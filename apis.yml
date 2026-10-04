@@ -80,8 +80,6 @@ apis:
   description: The Filesystems API from Amazon EFS — 2 operation(s) for filesystems.
   baseURL: https://elasticfilesystem.amazonaws.com
   tags:
-  - Filesystem
-  tags_raw:
   - Filesystems
   properties:
   - type: OpenAPI

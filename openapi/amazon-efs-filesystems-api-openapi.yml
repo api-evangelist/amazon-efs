@@ -171,21 +171,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DescribeFileSystemsResponse:
-      type: object
-      properties:
-        FileSystems:
-          type: array
-          items:
-            $ref: '#/components/schemas/FileSystem'
-          example:
-          - example-string
-        Marker:
-          type: string
-          example: example-string
-        NextMarker:
-          type: string
-          example: example-string
     FileSystem:
       type: object
       properties:
@@ -287,6 +272,21 @@ components:
           example:
           - Key: example-string
             Value: example-string
+    DescribeFileSystemsResponse:
+      type: object
+      properties:
+        FileSystems:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileSystem'
+          example:
+          - example-string
+        Marker:
+          type: string
+          example: example-string
+        NextMarker:
+          type: string
+          example: example-string
   securitySchemes:
     aws_sigv4:
       type: apiKey
