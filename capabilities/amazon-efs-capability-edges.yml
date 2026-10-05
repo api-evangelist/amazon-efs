@@ -1,0 +1,34 @@
+slug: amazon-efs
+provider: Amazon EFS
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Filesystems
+  spec_file: amazon-efs-filesystems-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.85
+  evidence: '"Amazon EFS Create File System", "Amazon EFS Describe File Systems", schema FileSystem —
+    "elastic file system for use with AWS cloud services"'
+  reason: Creating and deleting elastic file systems is cloud storage infrastructure provisioning, squarely
+    IT Infrastructure Management.
+- tag: Mount Targets
+  spec_file: amazon-efs-mount-targets-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.8
+  evidence: '"Amazon EFS Create Mount Target", "Amazon EFS Describe Mount Targets", schema MountTarget'
+  reason: Mount targets are network access endpoints for cloud file storage — storage/network infrastructure
+    configuration, no business capability beyond IT infrastructure.
