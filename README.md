@@ -1,4 +1,4 @@
-# Amazon EFS (amazon-efs)
+# Amazon EFS
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,75 +66,189 @@
 
 Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file system for use with AWS cloud services and on-premises resources. EFS is built to scale on demand to petabytes without disrupting applications, growing and shrinking automatically as you add and remove files.
 
-**APIs.json:** [https://aws.amazon.com/efs/](https://aws.amazon.com/efs/)
+**Areas:** Amazon Web Services · AWS · EFS · Elastic File System · File Storage · NFS · Serverless · Storage
 
-## Tags
+## Amazon EFS on APIs.io
 
-- Amazon Web Services
-- AWS
-- EFS
-- Elastic File System
-- File Storage
-- NFS
-- Serverless
-- Storage
+Everything profiled for Amazon EFS is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-efs/](https://apis.io/providers/amazon-efs/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (6)
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+- [Amazon EFS Mount Targets API](https://apis.io/apis/amazon-efs/amazon-efs-mount-targets-api/) — The Mount Targets API from Amazon EFS — 1 operation(s) for mount targets.
+- [Amazon EFS Filesystems API](https://apis.io/apis/amazon-efs/amazon-efs-filesystems-api/) — The Filesystems API from Amazon EFS — 2 operation(s) for filesystems.
+- [Amazon EFS Efs Access Points API](https://apis.io/apis/amazon-efs/amazon-efs-access-points-api/) — The Efs Access Points API from Amazon EFS — 2 operation(s) for efs access points.
+- [Amazon EFS Efs Operations API](https://apis.io/apis/amazon-efs/amazon-efs-operations-api/) — The Efs Operations API from Amazon EFS — 9 operation(s) for efs operations.
+- [Amazon EFS Efs Policy API](https://apis.io/apis/amazon-efs/amazon-efs-policy-api/) — The Efs Policy API from Amazon EFS — 1 operation(s) for efs policy.
+- [Amazon EFS Efs Resource Tags API](https://apis.io/apis/amazon-efs/amazon-efs-resource-tags-api/) — The Efs Resource Tags API from Amazon EFS — 1 operation(s) for efs resource tags.
 
-## APIs
+### Published properties
 
-### Amazon EFS API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-API for managing Amazon EFS file systems, mount targets, and related resources.
+#### Arazzo workflows (6)
 
-- **Base URL:** `https://elasticfilesystem.amazonaws.com`
+Multi-step workflows that chain operations into a business task.
 
-#### Properties
+- [Amazon EFS Decommission File System](https://apis.io/arazzos/amazon-efs/amazon-efs-decommission-file-system-workflow/)
+- [Amazon EFS Find or Create File System](https://apis.io/arazzos/amazon-efs/amazon-efs-find-or-create-file-system-workflow/)
+- [Amazon EFS Inspect File System Topology](https://apis.io/arazzos/amazon-efs/amazon-efs-inspect-file-system-topology-workflow/)
+- [Amazon EFS Multi-AZ Mount Targets](https://apis.io/arazzos/amazon-efs/amazon-efs-multi-az-mount-targets-workflow/)
+- [Amazon EFS Provision File System](https://apis.io/arazzos/amazon-efs/amazon-efs-provision-file-system-workflow/)
+- [Amazon EFS Provision Mount Target](https://apis.io/arazzos/amazon-efs/amazon-efs-provision-mount-target-workflow/)
 
-- [Documentation](https://docs.aws.amazon.com/efs/latest/ug/)
-- [OpenAPI](openapi/amazon-efs-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/amazon-efs.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-efs.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [OpenAPI](https://api.apis.guru/v2/specs/amazonaws.com/elasticfilesystem/2015-02-01/openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON Schema](json-schema/amazon-efs-filesystem-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/amazon-efs-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Pricing](https://aws.amazon.com/efs/pricing/)
-- [Getting Started](https://aws.amazon.com/efs/getting-started/)
-- [F A Q](https://aws.amazon.com/efs/faqs/)
-- [Documentation](https://docs.aws.amazon.com/efs/latest/ug/)
-- [API Reference](https://docs.aws.amazon.com/efs/latest/ug/API_Reference.html)
-- [Documentation](https://docs.aws.amazon.com/cli/latest/reference/efs/)
-- [Security](https://docs.aws.amazon.com/efs/latest/ug/security.html)
-- [JSON Structure](json-structure/amazon-efs-filesystem-structure.json)
-- [Example](examples/amazon-efs-filesystem-example.json)
+#### Agentic access (1)
 
-## Common Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Arazzo Workflows](arazzo/) — [Arazzo Specification](https://spec.openapis.org/arazzo/latest.html)
-- [Portal](https://aws.amazon.com/)
-- [Developer Portal](https://aws.amazon.com/)
+- [Amazon Efs Agentic Access](https://apis.io/agentic-access/amazon-efs/amazon-efs-agentic-access/)
+
+#### JSON Schema (4)
+
+The data models the API reads and writes.
+
+- [Amazon EFS FileSystem](https://apis.io/schemas/amazon-efs/amazon-efs-filesystem/)
+- [DescribeFileSystemsResponse](https://apis.io/schemas/amazon-efs/efs-openapi-describe-file-systems-response/)
+- [FileSystem](https://apis.io/schemas/amazon-efs/efs-openapi-file-system/)
+- [MountTarget](https://apis.io/schemas/amazon-efs/efs-openapi-mount-target/)
+
+#### JSON Structure (4)
+
+Data models expressed in JSON Structure.
+
+- [Amazon Efs Filesystem Structure](https://apis.io/json-structure/amazon-efs/amazon-efs-filesystem-structure/)
+- [Efs Openapi Describe File Systems Response Structure](https://apis.io/json-structure/amazon-efs/efs-openapi-describe-file-systems-response-structure/)
+- [Efs Openapi File System Structure](https://apis.io/json-structure/amazon-efs/efs-openapi-file-system-structure/)
+- [Efs Openapi Mount Target Structure](https://apis.io/json-structure/amazon-efs/efs-openapi-mount-target-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Efs Context](https://apis.io/jsonld/amazon-efs/amazon-efs-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Efs Vocabulary](https://apis.io/vocabularies/amazon-efs/amazon-efs-vocabulary/)
+
+#### Examples (4)
+
+Example requests and responses.
+
+- [Amazon Efs Filesystem Example](https://apis.io/examples/amazon-efs/amazon-efs-filesystem-example/)
+- [Efs Openapi Describe File Systems Response Example](https://apis.io/examples/amazon-efs/efs-openapi-describe-file-systems-response-example/)
+- [Efs Openapi File System Example](https://apis.io/examples/amazon-efs/efs-openapi-file-system-example/)
+- [Efs Openapi Mount Target Example](https://apis.io/examples/amazon-efs/efs-openapi-mount-target-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Amazon EFS Amazon Elastic File System (EFS) API](https://apis.io/collections/amazon-efs/open-amazon-efs/)
+- [Amazon EFS Amazon Elastic File System (EFS) 2015 02 01 API](https://apis.io/collections/amazon-efs/open-amazon-efs-2015-02-01-api/)
+- [Amazon EFS Amazon Elastic File System (EFS) API](https://apis.io/collections/amazon-efs/postman-amazon-efs/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon EFS — jsonschema rules](https://apis.io/rules/amazon-efs/amazon-efs-jsonschema-spectral-rules/)
+- [Amazon EFS API Rules](https://apis.io/rules/amazon-efs/amazon-efs-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Efs Authentication](https://apis.io/security/amazon-efs/amazon-efs-authentication/)
+- [Amazon Efs Domain Security](https://apis.io/security/amazon-efs/amazon-efs-domain-security/)
+- [Amazon Efs Trust Center](https://apis.io/security/amazon-efs/amazon-efs-trust-center/)
+- [Amazon Efs Vulnerability Disclosure](https://apis.io/security/amazon-efs/amazon-efs-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Efs Plans Pricing](https://apis.io/plans/amazon-efs/amazon-efs-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Efs Rate Limits](https://apis.io/rate-limits/amazon-efs/amazon-efs-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Efs Finops](https://apis.io/finops/amazon-efs/amazon-efs-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/efs/)
 - [Documentation](https://docs.aws.amazon.com/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
-- [Privacy Policy](https://aws.amazon.com/privacy/)
 - [Support](https://aws.amazon.com/support/)
 - [Blog](https://aws.amazon.com/blogs/)
-- [GitHub Organization](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [Login](https://signin.aws.amazon.com/)
-- [Status Page](https://status.aws.amazon.com/)
-- [Knowledge Center](https://repost.aws/knowledge-center)
-- [YouTube](https://www.youtube.com/user/AmazonWebServices)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/amazon-web-services)
-- [Contact](https://aws.amazon.com/contact-us/)
 - [Security](https://aws.amazon.com/security/)
 - [Compliance](https://aws.amazon.com/compliance/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Spectral Rules](rules/amazon-efs-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-efs-vocabulary.yaml)
-- [Integrations](https://aws.amazon.com/marketplace)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://status.aws.amazon.com/)
+
+## API Evangelist rating
+
+**Kin Score 56.9** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 58.9 |
+| Contract quality | 60.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 65.5 |
+| Access clarity | 61.8 |
+
+**Agent readiness 24.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-efs/](https://apis.io/providers/amazon-efs/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon EFS: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-efs/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
