@@ -1,0 +1,73 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/efs/pricing/
+sources:
+- https://aws.amazon.com/efs/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: Main pricing tables render via dynamic price tokens ({priceOf!...}) so per-GB-month storage, read/write,
+  tiering and provisioned throughput rates are not visible in the page text. Only the TCO figure ($0.0315/GB),
+  cross-AZ transfer rate ($0.01/GB), free tier (5 GB/month, $200 credits) appear numerically.
+plan_count: 3
+currency: USD
+plans:
+- name: EFS total cost of ownership (as low as)
+  price_text: $0.0315/GB
+  price: 0.0315
+  currency: USD
+  period: per-use
+  unit: GB
+- name: Cross-AZ data transfer (EC2 rate)
+  price_text: $0.01/GB
+  price: 0.01
+  currency: USD
+  period: per-use
+  unit: GB in/out of AZ
+- name: AWS Free Tier
+  price_text: 5 GB/month
+  price: 5
+  period: month
+  unit: GB of EFS Standard storage
+  included_quota: Up to 5 GB/month on EFS Standard for first 12 months
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - data
+  plans:
+  - name: EFS total cost of ownership (as low as)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: Cross-AZ data transfer (EC2 rate)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - other
+  - name: AWS Free Tier
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
