@@ -1,8 +1,9 @@
 name: Amazon EFS
-description: Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file
-  system for use with AWS cloud services and on-premises resources. EFS is built to scale on demand to
-  petabytes without disrupting applications, growing and shrinking automatically as you add and remove
-  files.
+
+description: Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file system for use with AWS cloud services
+  and on-premises resources. EFS is built to scale on demand to petabytes without disrupting applications, growing and shrinking automatically
+  as you add and remove files.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -15,7 +16,9 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 specificationVersion: '0.23'
+
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -26,17 +29,22 @@ accessModel:
   gated_source:
   - onboarding
   label: Freemium · Self-serve signup
-  confidence: medium
+  confidence: high
   source:
   - plans
   - authentication
+  - rate-limits
   - security
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+
 url: https://aws.amazon.com/efs/
+
 created: '2024-01-15'
+
 modified: '2026-09-16'
+
 tags:
 - Amazon Web Services
 - EFS
@@ -54,108 +62,54 @@ tags_raw:
 - NFS
 - Serverless
 - Storage
-apis:
-- aid: amazon-efs:amazon-efs-mount-targets-api
-  name: Amazon EFS Mount Targets API
-  description: The Mount Targets API from Amazon EFS — 1 operation(s) for mount targets.
-  baseURL: https://elasticfilesystem.amazonaws.com
-  tags:
-  - Mount Targets
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-efs-mount-targets-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/efs/latest/ug/
-  - type: JSONSchema
-    url: json-schema/amazon-efs-filesystem-schema.json
-  - type: JSONLD
-    url: json-ld/amazon-efs-context.jsonld
-  - type: Pricing
-    url: https://aws.amazon.com/efs/pricing/
-  - type: GettingStarted
-    url: https://aws.amazon.com/efs/getting-started/
-  - type: FAQ
-    url: https://aws.amazon.com/efs/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/efs/latest/ug/API_Reference.html
-  - type: Documentation
-    url: https://docs.aws.amazon.com/cli/latest/reference/efs/
-  - type: Security
-    url: https://docs.aws.amazon.com/efs/latest/ug/security.html
-  - type: JSONStructure
-    url: json-structure/amazon-efs-filesystem-structure.json
-  - type: Examples
-    url: examples/amazon-efs-filesystem-example.json
-- aid: amazon-efs:amazon-efs-filesystems-api
-  name: Amazon EFS Filesystems API
-  description: The Filesystems API from Amazon EFS — 2 operation(s) for filesystems.
-  baseURL: https://elasticfilesystem.amazonaws.com
-  tags:
-  - Filesystem
-  tags_raw:
-  - Filesystems
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-efs-filesystems-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/efs/latest/ug/
-  - type: JSONSchema
-    url: json-schema/amazon-efs-filesystem-schema.json
-  - type: JSONLD
-    url: json-ld/amazon-efs-context.jsonld
-  - type: Pricing
-    url: https://aws.amazon.com/efs/pricing/
-  - type: GettingStarted
-    url: https://aws.amazon.com/efs/getting-started/
-  - type: FAQ
-    url: https://aws.amazon.com/efs/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/efs/latest/ug/API_Reference.html
-  - type: Documentation
-    url: https://docs.aws.amazon.com/cli/latest/reference/efs/
-  - type: Security
-    url: https://docs.aws.amazon.com/efs/latest/ug/security.html
-  - type: JSONStructure
-    url: json-structure/amazon-efs-filesystem-structure.json
-  - type: Examples
-    url: examples/amazon-efs-filesystem-example.json
-- aid: amazon-efs:amazon-efs-access-points-api
-  name: Amazon EFS Efs Access Points API
-  description: The Efs Access Points API from Amazon EFS — 2 operation(s) for efs access points.
-  baseURL: https://elasticfilesystem.amazonaws.com
-  tags:
-  - Efs Access Points
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-efs-access-points-api-openapi.yml
-- aid: amazon-efs:amazon-efs-operations-api
-  name: Amazon EFS Efs Operations API
-  description: The Efs Operations API from Amazon EFS — 9 operation(s) for efs operations.
-  baseURL: https://elasticfilesystem.amazonaws.com
-  tags:
-  - Efs Operations
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-efs-operations-api-openapi.yml
-- aid: amazon-efs:amazon-efs-policy-api
-  name: Amazon EFS Efs Policy API
-  description: The Efs Policy API from Amazon EFS — 1 operation(s) for efs policy.
-  baseURL: https://elasticfilesystem.amazonaws.com
-  tags:
-  - Efs Policy
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-efs-policy-api-openapi.yml
-- aid: amazon-efs:amazon-efs-resource-tags-api
-  name: Amazon EFS Efs Resource Tags API
-  description: The Efs Resource Tags API from Amazon EFS — 1 operation(s) for efs resource tags.
-  baseURL: https://elasticfilesystem.amazonaws.com
-  tags:
-  - Efs Resource Tags
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-efs-resource-tags-api-openapi.yml
+
 common:
+- type: Spectral
+  url: rules/amazon-efs-spectral-rules.yml
+- type: Spectral
+  url: rules/amazon-efs-rules.yml
+- type: Spectral
+  url: rules/amazon-efs-jsonschema-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/amazon-efs-vocabulary.yml
+- type: DataModel
+  url: data-model/amazon-efs-data-model.yml
+- type: CLI
+  url: cli/amazon-efs-cli.yml
+- type: Idempotency
+  url: conventions/amazon-efs-conventions.yml
+- type: Conventions
+  url: conventions/amazon-efs-conventions.yml
+- type: Deprecation
+  url: lifecycle/amazon-efs-lifecycle.yml
+- type: Lifecycle
+  url: lifecycle/amazon-efs-lifecycle.yml
+- type: ErrorCatalog
+  url: errors/amazon-efs-error-codes.yml
+- type: ErrorCatalog
+  url: errors/amazon-efs-problem-types.yml
+- type: Conformance
+  url: conformance/amazon-efs-conformance.yml
+- type: LLMsTxt
+  url: llms/amazon-efs-llms.txt
+- type: SecurityTxt
+  url: well-known/amazon-efs-security.txt
+- type: SecurityTxt
+  url: well-known/amazon-efs-repost-security.txt
+- type: WellKnown
+  url: well-known/amazon-efs-well-known.yml
+- type: Hosts
+  url: hosts/amazon-efs-hosts.yml
+- type: Vendors
+  url: vendors/amazon-efs-vendors.yml
+- type: SDKs
+  url: packages/amazon-efs-packages.yml
+- type: Packages
+  url: packages/amazon-efs-packages.yml
+- type: Newsroom
+  url: https://aws.amazon.com/media/?nc2=h_sol_ind_med
+- type: GettingStarted
+  url: https://developer.amazon.com/frustration-free-setup
 - type: Plans
   url: plans/amazon-efs-plans-pricing.yml
 - type: RateLimits
@@ -256,8 +210,7 @@ common:
   - name: Content Management
     description: Shared file storage for web servers and CMS platforms requiring concurrent file access.
   - name: DevOps and Code Sharing
-    description: Centralized code and configuration storage accessible by development teams and CI/CD
-      pipelines.
+    description: Centralized code and configuration storage accessible by development teams and CI/CD pipelines.
   - name: Big Data Analytics
     description: High-throughput shared storage for analytics workloads requiring parallel data access.
 - type: Integrations
@@ -269,8 +222,7 @@ common:
   - name: Amazon EKS
     description: Use the Amazon EFS CSI driver to mount EFS file systems as Kubernetes persistent volumes.
   - name: AWS Lambda
-    description: Access EFS file systems from Lambda functions for shared data storage and large model
-      loading.
+    description: Access EFS file systems from Lambda functions for shared data storage and large model loading.
   - name: AWS Backup
     description: Automated backup of EFS file systems with centralized policy management.
 - type: SpectralRules
@@ -279,9 +231,158 @@ common:
   url: vocabulary/amazon-efs-vocabulary.yaml
 - type: Integrations
   url: https://aws.amazon.com/marketplace
+- type: UsageTerms
+  url: terms/amazon-efs-terms-of-service.yml
+- type: Attestations
+  url: compliance/amazon-efs-compliance.yml
+- type: Eligibility
+  url: eligibility/amazon-efs-eligibility.yml
+- type: AIPreferences
+  url: ai-preferences/amazon-efs-ai-preferences.yml
+
+apis:
+- aid: amazon-efs:amazon-efs-mount-targets-api
+  name: Amazon EFS Mount Targets API
+  description: The Mount Targets API from Amazon EFS — 1 operation(s) for mount targets.
+  baseURL: https://elasticfilesystem.amazonaws.com
+  tags:
+  - Mount Targets
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-efs-mount-targets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/efs/latest/ug/
+  - type: JSONSchema
+    url: json-schema/amazon-efs-filesystem-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-efs-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/efs/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/efs/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/efs/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/efs/latest/ug/API_Reference.html
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/efs/
+  - type: Security
+    url: https://docs.aws.amazon.com/efs/latest/ug/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-efs-filesystem-structure.json
+  - type: Examples
+    url: examples/amazon-efs-filesystem-example.json
+- aid: amazon-efs:amazon-efs-filesystems-api
+  name: Amazon EFS Filesystems API
+  description: The Filesystems API from Amazon EFS — 2 operation(s) for filesystems.
+  baseURL: https://elasticfilesystem.amazonaws.com
+  tags:
+  - Filesystem
+  tags_raw:
+  - Filesystems
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-efs-filesystems-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/efs/latest/ug/
+  - type: JSONSchema
+    url: json-schema/amazon-efs-filesystem-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-efs-context.jsonld
+  - type: Pricing
+    url: https://aws.amazon.com/efs/pricing/
+  - type: GettingStarted
+    url: https://aws.amazon.com/efs/getting-started/
+  - type: FAQ
+    url: https://aws.amazon.com/efs/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/efs/latest/ug/API_Reference.html
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cli/latest/reference/efs/
+  - type: Security
+    url: https://docs.aws.amazon.com/efs/latest/ug/security.html
+  - type: JSONStructure
+    url: json-structure/amazon-efs-filesystem-structure.json
+  - type: Examples
+    url: examples/amazon-efs-filesystem-example.json
+- aid: amazon-efs:amazon-efs-access-points-api
+  name: Amazon EFS Efs Access Points API
+  description: The Efs Access Points API from Amazon EFS — 2 operation(s) for efs access points.
+  baseURL: https://elasticfilesystem.amazonaws.com
+  tags:
+  - Efs Access Points
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-efs-access-points-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-efs-access-point-description-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-describe-access-points-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-create-access-point-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-describe-access-points-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-delete-access-point-request-schema.json
+- aid: amazon-efs:amazon-efs-operations-api
+  name: Amazon EFS Efs Operations API
+  description: The Efs Operations API from Amazon EFS — 9 operation(s) for efs operations.
+  baseURL: https://elasticfilesystem.amazonaws.com
+  tags:
+  - Efs Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-efs-operations-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-efs-replication-configuration-description-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-put-lifecycle-configuration-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-delete-replication-configuration-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-update-file-system-protection-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-file-system-protection-description-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-describe-tags-request-schema.json
+- aid: amazon-efs:amazon-efs-policy-api
+  name: Amazon EFS Efs Policy API
+  description: The Efs Policy API from Amazon EFS — 1 operation(s) for efs policy.
+  baseURL: https://elasticfilesystem.amazonaws.com
+  tags:
+  - Efs Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-efs-policy-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-efs-put-file-system-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-file-system-policy-description-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-delete-file-system-policy-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-describe-file-system-policy-request-schema.json
+- aid: amazon-efs:amazon-efs-resource-tags-api
+  name: Amazon EFS Efs Resource Tags API
+  description: The Efs Resource Tags API from Amazon EFS — 1 operation(s) for efs resource tags.
+  baseURL: https://elasticfilesystem.amazonaws.com
+  tags:
+  - Efs Resource Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-efs-resource-tags-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/amazon-efs-list-tags-for-resource-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-list-tags-for-resource-response-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-untag-resource-request-schema.json
+  - type: JSONSchema
+    url: json-schema/amazon-efs-tag-resource-request-schema.json
 maintainer:
   name: Kin Lane
   email: kin@apievangelist.com
+
 integrations:
 - name: Agent Mode
 - name: Sign in
@@ -291,5 +392,12 @@ integrations:
 - name: Why AWS Marketplace?
 - name: Get started in AWS Marketplace
 - name: Manage Your Account
+
 x-parent: amazon-web-services
+
 x-relationship: product
+x-enrichment:
+  date: '2026-11-11'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v6

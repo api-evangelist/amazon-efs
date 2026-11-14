@@ -2,6 +2,7 @@
 generated: '2026-10-28'
 method: searched
 source: https://aws.amazon.com/efs/pricing/
+name: Amazon EFS API Plans
 sources:
 - https://aws.amazon.com/efs/pricing/
 provenance:
@@ -40,7 +41,7 @@ plans:
   unit: GB of EFS Standard storage
   included_quota: Up to 5 GB/month on EFS Standard for first 12 months
 x-canonical:
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - hybrid
