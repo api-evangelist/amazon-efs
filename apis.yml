@@ -1,3 +1,4 @@
+aid: amazon-efs
 name: Amazon EFS
 
 description: Amazon Elastic File System (EFS) provides a simple, serverless, set-and-forget elastic file system for use with AWS cloud services
@@ -35,7 +36,7 @@ accessModel:
   - authentication
   - rate-limits
   - security
-  generated: '2026-11-13'
+  generated: '2026-11-20'
   method: derived
 image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
 
